@@ -67,6 +67,18 @@ This is the abstract one day I'll write
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
+Para falar do milonga em paralelo, é preciso antes contextualizar o milonga. Para
+isso, é obrigatório falar do wasora. É no wasora que é feito o controle de malhas.
+Sendo assim, em duas abordagens paralelas diferentes:
+\begin{itemize}
+\item Paralelizar apenas a solução das matrizes via SLEPc e PETSc;
+  \item Paralelizar decompondo a malha completamente.
+\end{itemize}
+
+milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{slepc} libraries and
+its impossible to propose any paralelization scheme for milonga before devoting some
+time to understand the way both of these libraries work.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
 
