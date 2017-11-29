@@ -36,17 +36,17 @@
 
 
 %%%% Maketitle
-\title{Parallelized milonga}
-\author{Vitor V. A. Silva,$^{*}$ and Germ\'an Theler$^{\dagger}$}
+\title{Milonga Nuclear Code implementation analisys aimed to future parallelization}
+\author{Vitor Vasconcelos$^{*}$, Andr\'e A. C. dos Santos$^{*}$, Daniel Campolina$^{*}$ and Germ\'an Theler$^{\dagger}$}
 
 \institute{
-$^{*}$Centro de Desenvolvimento da Tecnologia Nuclear, CEP: 30......
+$^{*}$Centro de Desenvolvimento da Tecnologia Nuclear, CEP 31270-901,
 Belo Horizonte - MG, Brazil
 \and
 $^{\dagger}$Seamples, Rafaela, Argentina
 }
 
-\email{vitors@cdtn.br \and theler@seamplex.com}
+\email{\{vitors, aacs, campolina\}@cdtn.br \and theler@seamplex.com}
 
 % Optional disclaimer: remove this command to hide
 \disclaimer{Notice: this manuscript is a work of fiction. Any resemblance to
@@ -67,15 +67,21 @@ This is the abstract one day I'll write
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Para falar do milonga em paralelo, é preciso antes contextualizar o milonga. Para
-isso, é obrigatório falar do wasora. É no wasora que é feito o controle de malhas.
-Sendo assim, em duas abordagens paralelas diferentes:
+Before any atempt to describe \textit{milonga} nuclear code in parallel, it is
+necessary to describe its context and how it works. In order to do that, is mandatory
+to give a brief introduction of \textit{wasora}.
+
+Wasora is... \cite{wasora}.
+
+There are two first approaches to parallelize milonga:
 \begin{itemize}
-\item Paralelizar apenas a solução das matrizes via SLEPc e PETSc;
-  \item Paralelizar decompondo a malha completamente.
+\item Parallelize only the solution of the matrices obtained by the discretization
+  provided by either finite volumes of finite elements discretization schemes using
+  SLEPc and PETSc libraries;
+\item Parallelize using domain decomposition techniques.
 \end{itemize}
 
-milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{slepc} libraries and
+milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
 its impossible to propose any paralelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
@@ -84,7 +90,7 @@ time to understand the way both of these libraries work.
 
 \subsection{Profiling}
 Before any attempt to parallelize any piece of software, a basic task must be performed:
-software execution profiling. Profiling [cite someone] consists in a dynamic program analysis
+software execution profiling. Profiling consists in a dynamic program analysis
 that measures memory use, time complexity, number of function calls and many other characteristics of
 a program.
 
@@ -94,11 +100,20 @@ the any bottlenecks of its execution.
 
 For the selected mesh and finite volumes problem, two functions were clearly identified as bottlenecks:
 \begin{verbatim}
-ke_nearest_i
+kd_nearest_i
 hyperrect_dist_sq
 \end{verbatim}
 
-These functions belong to the third party code used to manipulate meshes.
+These functions belong to the third party code used to manipulate meshes. This chunk of code implements
+a \textit{k-d tree} structure and its associated algorithms. This data structure, proposed by \cite{Bentley1975}
+is aimed to partitioning a space and find neighobours of an element. Despite being the most used data
+structure for the proposed objective, it performes poorly for the needs of \textit{milonga}.
+
+The reason for this degraded performance is the ammount of data access necessary for finite volumes
+and finite elements discretization schemes. One solution for this bottleneck is to change the data structure
+in order to avoid the prohibitive number of neighbours searches. This can be accomplished storing neighbour
+information at each node or element. Of course, the drawback of this solution is the increase in the memory
+comsumption to store the data.
 
 \subsection{Matrices aimed to parallel solution [This has no effect in improving milonga performance]}
 A simple approach to make milonga take advantage of parallel architectures is to parallelize the
@@ -123,29 +138,32 @@ simply making parameters twinkling thus changinhg the memory ocuppancy/inter pro
 
 
 
-Equations look exceedingly pretty. Here is a 3-D, monoenergetic, steady-state
-transport equation with isotropic scattering and an isotropic extraneous source:
-\begin{subequations} \label{eqs:fullTransport}
-\begin{multline} \label{eq:fullTransportVol}
-  \vec{\Omega}\vd \grad \psi(\vec{x}, \vec{\Omega})
-  + \sigma(\vec{x}) \psi (\vec{x}, \vec{\Omega})
-\\ =
-  \frac{\sigma_s(\vec{x})}{4\pi} \int_{4\pi} \psi(\vec{x},\vec{\Omega}')
-  \ud\Omega' + \frac{q(\vec{x})}{4\pi}
-  \equiv \frac{1}{4\pi} Q(\vec{x}) \,,
-\end{multline}
-inside $\vec{x} \in V$, $\vec{\Omega} \in 4\pi$, with an incident boundary
-condition
-\begin{equation} \label{eq:fullTransportBndy}
-  \psi(\vec{x}, \vec{\Omega}) = \psi^b(\vec{x}, \vec{\Omega}) \,,
- \quad \vec{x} \in \partial V, \ \vec{\Omega} \vd \vec{n} < 0\,.
-\end{equation}
-\end{subequations}
+%Equations look exceedingly pretty. Here is a 3-D, monoenergetic, steady-state
+%transport equation with isotropic scattering and an isotropic extraneous source:
+%\begin{subequations} \label{eqs:fullTransport}
+%\begin{multline} \label{eq:fullTransportVol}
+%  \vec{\Omega}\vd \grad \psi(\vec{x}, \vec{\Omega})
+%  + \sigma(\vec{x}) \psi (\vec{x}, \vec{\Omega})
+%\\ =
+%  \frac{\sigma_s(\vec{x})}{4\pi} \int_{4\pi} \psi(\vec{x},\vec{\Omega}')
+%  \ud\Omega' + \frac{q(\vec{x})}{4\pi}
+%  \equiv \frac{1}{4\pi} Q(\vec{x}) \,,
+%\end{multline}
+%inside $\vec{x} \in V$, $\vec{\Omega} \in 4\pi$, with an incident boundary
+%condition
+%\begin{equation} \label{eq:fullTransportBndy}
+%  \psi(\vec{x}, \vec{\Omega}) = \psi^b(\vec{x}, \vec{\Omega}) \,,
+% \quad \vec{x} \in \partial V, \ \vec{\Omega} \vd \vec{n} < 0\,.
+%\end{equation}
+%\end{subequations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Analysis}
-The results were interesting, so interesting in fact that we have decided to
-present them here.
+
+Milonga runtime, profiling and memory demand before changes.
+Milonga runtime, profiling and memory demand after changes
+
+Assesment of changes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Subsection Goes Here}
@@ -157,14 +175,6 @@ an equation for the Marshak diffusion boundary condition:
   4 J^- = \phi + 2 D \vec{n} \vd \grad \phi \,.
 \end{equation}
 If we so choose, we can effortlessly reference the equation later.
-
-Another paragraph starts with Eq.~\eqref{eq:marshak} and sets $J^-$ to zero, a
-vacuum boundary condition:
-\begin{equation*}
-  0 = \phi + \frac{2}{3} \frac{1}{\sigma} \vec{n} \vd \grad \phi \,.
-\end{equation*}
-The extrapolation distance is $2/3$. A more detailed asymptotic analysis yields
-an extrapolation distance of about $0.71045$.
 
 Figure~\ref{fig:voltage} shows how a plot might conceivably look in your
 document. Always place figures after they are referenced so as not to throw
