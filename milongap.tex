@@ -88,7 +88,7 @@ time to understand the way both of these libraries work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
 
-\subsection{Profiling}
+\section{Profiling}
 Before any attempt to parallelize any piece of software, a basic task must be performed:
 software execution profiling. Profiling consists in a dynamic program analysis
 that measures memory use, time complexity, number of function calls and many other characteristics of
@@ -114,6 +114,29 @@ and finite elements discretization schemes. One solution for this bottleneck is 
 in order to avoid the prohibitive number of neighbours searches. This can be accomplished storing neighbour
 information at each node or element. Of course, the drawback of this solution is the increase in the memory
 comsumption to store the data.
+
+\subsection{Scalability}
+
+In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
+test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{milonga}
+and consists of the same problem solved in three different discretizations, respectively increased. In other words,
+the reference mesh was refined one time and the refined mesh was again refined. This process was carried by simply
+using the \texttt{-refine} parameter of gmsh.
+
+The mesh sizes are presented in table ~\ref{tab:meshes}.
+
+\begin{table}[]
+\centering
+\caption{Comparative results for three meshes,}
+\label{tab:meshes}
+\begin{tabular}{crcr}
+                            & \multicolumn{1}{c}{elements} & matrix size       & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}time\\ elapsed {[}s{]}\end{tabular}} \\ \hline
+\multicolumn{1}{c|}{Mesh 0} & 12,884                       & 25,768 x 25,768   & 11.47                                                                              \\ \hline
+\multicolumn{1}{c|}{Mesh 1} & 51,536                       & 103,072 x 103,072 & 87.68                                                                              \\ \hline
+\multicolumn{1}{c|}{Mesh 2} & 206,154                      & 412,288 x 412,288 & 773.33                                                                             \\ \hline
+\end{tabular}
+\end{table}
+
 
 \subsection{Matrices aimed to parallel solution [This has no effect in improving milonga performance]}
 A simple approach to make milonga take advantage of parallel architectures is to parallelize the
