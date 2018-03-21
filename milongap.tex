@@ -115,6 +115,13 @@ in order to avoid the prohibitive number of neighbours searches. This can be acc
 information at each node or element. Of course, the drawback of this solution is the increase in the memory
 comsumption to store the data.
 
+\subsection{Examples: 3dshape cube}
+
+Some preliminary tests regarding a tethraedrical cube lead to the \texttt{mesh/tet4.c} file.
+Specifically, in function \texttt{mesh\_four\_node\_tetrahedron\_dhdr}, there is a long case
+statement which was replaced by a two if clauses function body, simply returning $-1$, $1$ or $0$
+depending on function arguments. These tests lead to an astonishing slow run of milonga (alcor-lx).
+
 \subsection{Scalability}
 
 In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
