@@ -51,8 +51,8 @@ $^{\dagger}$Seamplex, Rafaela, Argentina
 \email{\{vitors, aacs, campolina\}@cdtn.br \and theler@seamplex.com}
 
 % Optional disclaimer: remove this command to hide
-\disclaimer{Notice: this manuscript is a work of fiction. Any resemblance to
-actual articles, living or dead, is purely coincidental.}
+%\disclaimer{Notice: this manuscript is a work of fiction. Any resemblance to
+%actual articles, living or dead, is purely coincidental.}
 
 
 %%%% Abstract
@@ -97,8 +97,19 @@ that measures memory use, time complexity, number of function calls and many oth
 a program.
 
 The standard profiling tool for Linux systems is gprof [cite]. Gprof was used in a standard milonga
-execution, with a mesh of about 300 thousand elements and fixed cross-sections in order to check
-the any bottlenecks of its execution.
+execution
+%with a mesh of about 300 thousand elements
+and fixed cross-sections in order to check
+the existence of any bottlenecks of its execution.
+
+\subsection{Test-case}
+
+The test case is made of two different meshes. These meshes are generated using the original cylinder geometry file
+provided by milonga as part of its examples/check cases. The first mesh is a tetrahedrical one and has $N$
+elements. The second mesh is generated using mainly hexahedra\footnote{Changes made into the original
+  geometry file are shown in \ref{Appendix}} and, despite having a different number of elements than
+the tetrahedrical mesh, keeps the number of elements at the same order of magnitude.
+
 
 For the selected mesh and finite volumes problem, two functions were clearly identified as bottlenecks:
 \begin{verbatim}
@@ -117,12 +128,14 @@ in order to avoid the prohibitive number of neighbours searches. This can be acc
 information at each node or element. Of course, the drawback of this solution is the increase in the memory
 comsumption to store the data.
 
-\subsection{Examples: 3dshape cube}
+%\subsection{Examples: 3dshape cube}
+%
+%Some preliminary tests regarding a tethraedrical cube lead to the \texttt{mesh/tet4.c} file.
+%Specifically, in function \texttt{mesh\_four\_node\_tetrahedron\_dhdr}, there is a long case
+%statement which was replaced by a two if clauses function body, simply returning $-1$, $1$ or $0$
+%depending on function arguments. These tests lead to an astonishing slow run of milonga (alcor-lx).
 
-Some preliminary tests regarding a tethraedrical cube lead to the \texttt{mesh/tet4.c} file.
-Specifically, in function \texttt{mesh\_four\_node\_tetrahedron\_dhdr}, there is a long case
-statement which was replaced by a two if clauses function body, simply returning $-1$, $1$ or $0$
-depending on function arguments. These tests lead to an astonishing slow run of milonga (alcor-lx).
+
 
 \subsection{Scalability}
 
@@ -271,7 +284,7 @@ that your subsection needs at least two of them.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
 \section{Appendix}
-
+\label{Appendix}
 Some changes were made to the original example \texttt{3dshape.mil} distributed
 with milonga in order to create a similar mesh to the cylinder, but using
 hexahedrical elements. The changes made in the \texttt{cylinder.geo} file
