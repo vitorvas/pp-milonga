@@ -1,0 +1,1529 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 23.53      0.04     0.04  1148232     0.00     0.00  mesh_eight_node_hexahedron_h
+ 17.65      0.07     0.03    40704     0.00     0.00  mesh_compute_dxdr
+ 11.76      0.09     0.02  2755800     0.00     0.00  mesh_eight_node_hexahedron_dhdr
+ 11.76      0.11     0.02    12688     0.00     0.00  mesh_compute_dhdx
+ 11.76      0.13     0.02     1716     0.01     0.06  sn_elements_build_elemental_objects
+  5.88      0.14     0.01   674046     0.00     0.00  mesh_six_node_prism_dhdr
+  5.88      0.15     0.01    40704     0.00     0.00  mesh_integration_weight
+  5.88      0.16     0.01    12688     0.00     0.00  mesh_compute_B
+  5.88      0.17     0.01     1716     0.01     0.02  mesh_integral_over_element
+  0.00      0.17     0.00   280842     0.00     0.00  mesh_six_node_prism_h
+  0.00      0.17     0.00    56720     0.00     0.00  mesh_subtract
+  0.00      0.17     0.00    53392     0.00     0.00  mesh_determinant
+  0.00      0.17     0.00    52571     0.00     0.00  wasora_evaluate_expression
+  0.00      0.17     0.00    40704     0.00     0.00  mesh_compute_h
+  0.00      0.17     0.00    38440     0.00     0.00  mesh_four_node_quad_dhdr
+  0.00      0.17     0.00    23272     0.00     0.00  mesh_dot
+  0.00      0.17     0.00    17472     0.00     0.00  mesh_cross_dot
+  0.00      0.17     0.00    15329     0.00     0.00  mesh_alloc_fem_objects
+  0.00      0.17     0.00    15328     0.00     0.00  mesh_add_element_to_list
+  0.00      0.17     0.00    12688     0.00     0.00  mesh_add_material_to_list
+  0.00      0.17     0.00    12688     0.00     0.00  mesh_compute_H
+  0.00      0.17     0.00    12688     0.00     0.01  mesh_compute_fem_objects_at_gauss
+  0.00      0.17     0.00    12688     0.00     0.00  mesh_compute_l
+  0.00      0.17     0.00    12688     0.00     0.00  mesh_compute_x
+  0.00      0.17     0.00    12688     0.00     0.00  mesh_inverse
+  0.00      0.17     0.00    10560     0.00     0.00  PetscMemcpy
+  0.00      0.17     0.00     9620     0.00     0.00  mesh_four_node_quad_h
+  0.00      0.17     0.00     3076     0.00     0.00  mesh_compute_element_barycenter
+  0.00      0.17     0.00     2904     0.00     0.00  mesh_three_node_triang_dhdr
+  0.00      0.17     0.00     2832     0.00     0.00  mesh_normalized_cross
+  0.00      0.17     0.00     2640     0.00     0.00  sn_elements_add_vacuum_bc
+  0.00      0.17     0.00     2392     0.00     0.00  mesh_hexahedron_vol
+  0.00      0.17     0.00     2268     0.00     0.00  mesh_twentyseven_node_hexahedron_dhdr
+  0.00      0.17     0.00     2152     0.00     0.00  mesh_cross
+  0.00      0.17     0.00     1964     0.00     0.00  mesh_count_common_nodes
+  0.00      0.17     0.00     1806     0.00     0.00  insert_rec
+  0.00      0.17     0.00     1806     0.00     0.00  kd_insert
+  0.00      0.17     0.00     1805     0.00     0.00  hyperrect_extend
+  0.00      0.17     0.00     1680     0.00     0.00  mesh_twenty_node_hexahedron_dhdr
+  0.00      0.17     0.00     1040     0.00     0.00  mesh_prism_vol
+  0.00      0.17     0.00      756     0.00     0.00  mesh_twentyseven_node_hexahedron_h
+  0.00      0.17     0.00      732     0.00     0.00  mesh_three_node_triang_h
+  0.00      0.17     0.00      680     0.00     0.00  mesh_find_element_volumetric_neighbor
+  0.00      0.17     0.00      680     0.00     0.00  mesh_subtract_dot
+  0.00      0.17     0.00      680     0.00     0.00  sn_elements_compute_outward_normal
+  0.00      0.17     0.00      560     0.00     0.00  mesh_twenty_node_hexahedron_h
+  0.00      0.17     0.00      180     0.00     0.00  mesh_nine_node_quad_dhdr
+  0.00      0.17     0.00      166     0.00     0.00  wasora_get_next_token
+  0.00      0.17     0.00      160     0.00     0.00  mesh_eight_node_quad_dhdr
+  0.00      0.17     0.00      150     0.00     0.00  mesh_ten_node_tetrahedron_dhdr
+  0.00      0.17     0.00      120     0.00     0.00  wasora_mesh_add_node_parent
+  0.00      0.17     0.00      100     0.00     0.00  wasora_read_line
+  0.00      0.17     0.00       98     0.00     0.00  wasora_check_name
+  0.00      0.17     0.00       90     0.00     0.00  mesh_nine_node_quad_h
+  0.00      0.17     0.00       80     0.00     0.00  mesh_eight_node_quad_h
+  0.00      0.17     0.00       70     0.00     0.00  wasora_define_variable
+  0.00      0.17     0.00       70     0.00     0.00  wasora_free_var
+  0.00      0.17     0.00       60     0.00     0.00  mesh_four_node_tetrahedron_dhdr
+  0.00      0.17     0.00       50     0.00     0.00  mesh_ten_node_tetrahedron_h
+  0.00      0.17     0.00       50     0.00     0.00  wasora_mesh_compute_coords_from_parent
+  0.00      0.17     0.00       48     0.00     0.00  mesh_six_node_triang_dhdr
+  0.00      0.17     0.00       34     0.00     0.00  wasora_parse_factor
+  0.00      0.17     0.00       32     0.00     0.00  wasora_destroy_expression
+  0.00      0.17     0.00       30     0.00     0.00  wasora_parser_match_keyword_expression
+  0.00      0.17     0.00       30     0.00     0.00  wasora_parser_string
+  0.00      0.17     0.00       28     0.00     0.00  mesh_alloc_gauss
+  0.00      0.17     0.00       26     0.00     0.00  mesh_init_shape_at_gauss
+  0.00      0.17     0.00       26     0.00     0.00  wasora_parse_madeup_expression
+  0.00      0.17     0.00       25     0.00     0.00  wasora_get_vector_ptr
+  0.00      0.17     0.00       24     0.00     0.00  mesh_six_node_triang_h
+  0.00      0.17     0.00       24     0.00     0.00  wasora_get_matrix_ptr
+  0.00      0.17     0.00       20     0.00     0.00  mesh_four_node_tetrahedron_h
+  0.00      0.17     0.00       19     0.00     0.00  wasora_parse_line
+  0.00      0.17     0.00       19     0.00     0.00  wasora_pop_error_message
+  0.00      0.17     0.00       18     0.00     0.00  wasora_define_function
+  0.00      0.17     0.00       18     0.00     0.00  wasora_free_function
+  0.00      0.17     0.00       18     0.00     0.00  wasora_function_init
+  0.00      0.17     0.00       18     0.00     0.00  wasora_get_function_ptr
+  0.00      0.17     0.00       16     0.00     0.00  wasora_ends_in_init
+  0.00      0.17     0.00       16     0.00     0.00  wasora_ends_in_zero
+  0.00      0.17     0.00       16     0.00     0.00  wasora_get_builtin_function_ptr
+  0.00      0.17     0.00       16     0.00     0.00  wasora_get_builtin_functional_ptr
+  0.00      0.17     0.00       16     0.00     0.00  wasora_get_builtin_vectorfunction_ptr
+  0.00      0.17     0.00       16     0.00     0.00  wasora_get_variable_ptr
+  0.00      0.17     0.00       14     0.00     0.00  wasora_define_instruction
+  0.00      0.17     0.00       13     0.00     0.00  wasora_add_leading_zeros
+  0.00      0.17     0.00       13     0.00     0.00  wasora_parse_expression
+  0.00      0.17     0.00       13     0.00     0.00  wasora_strip_blanks
+  0.00      0.17     0.00       10     0.00     0.00  sn_elements_results_fill_args
+  0.00      0.17     0.00        9     0.00     0.00  mesh_three_node_line_dhdr
+  0.00      0.17     0.00        9     0.00     0.00  mesh_three_node_line_h
+  0.00      0.17     0.00        9     0.00     0.00  mesh_vtk_write_scalar
+  0.00      0.17     0.00        9     0.00     0.00  wasora_mesh_parse_line
+  0.00      0.17     0.00        8     0.00     0.00  milonga_resolve_xs_expr
+  0.00      0.17     0.00        8     0.00     0.00  wasora_define_vector
+  0.00      0.17     0.00        8     0.00     0.00  wasora_free_vector
+  0.00      0.17     0.00        8     0.00     0.00  wasora_instruction_print
+  0.00      0.17     0.00        6     0.00     0.00  PetscTime
+  0.00      0.17     0.00        6     0.00     0.00  mesh_two_node_line_dhdr
+  0.00      0.17     0.00        6     0.00     0.00  mesh_two_node_line_h
+  0.00      0.17     0.00        6     0.00     0.00  milonga_get_cpu_time
+  0.00      0.17     0.00        6     0.00     0.00  wasora_define_file
+  0.00      0.17     0.00        5     0.00     0.00  wasora_fopen
+  0.00      0.17     0.00        4     0.00     0.00  plugin_parse_line
+  0.00      0.17     0.00        4     0.00     0.00  wasora_define_physical_property
+  0.00      0.17     0.00        4     0.00     0.00  wasora_define_property_data
+  0.00      0.17     0.00        4     0.00     0.00  wasora_evaluate_string
+  0.00      0.17     0.00        4     0.00     0.00  wasora_instruction_close_file
+  0.00      0.17     0.00        4     0.00     0.00  wasora_vector_init
+  0.00      0.17     0.00        3     0.00     0.00  wasora_instruction_open_file
+  0.00      0.17     0.00        3     0.00     0.00  wasora_realloc_variable_ptr
+  0.00      0.17     0.00        2     0.00     0.00  mesh_hexa_gauss27_init
+  0.00      0.17     0.00        2     0.00     0.00  mesh_tetrahedron_gauss_init
+  0.00      0.17     0.00        2     0.00     0.00  milonga_assembly_objects
+  0.00      0.17     0.00        2     0.00     0.00  milonga_debug_n_processors
+  0.00      0.17     0.00        2     0.00     0.00  milonga_free_global_matrices
+  0.00      0.17     0.00        2     0.00     0.00  milonga_free_global_vectors
+  0.00      0.17     0.00        2     0.00     0.00  sn_elements_allocate_particular_elemental_objects
+  0.00      0.17     0.00        2     0.00     0.00  sn_elements_problem_free
+  0.00      0.17     0.00        2     0.00     0.00  wasora_define_physical_entity
+  0.00      0.17     0.00        2     0.00     0.00  wasora_instruction_mesh_post
+  0.00      0.17     0.00        1     0.00     0.00  clear_rec
+  0.00      0.17     0.00        1     0.00     0.00  hyperrect_create
+  0.00      0.17     0.00        1     0.00     0.00  hyperrect_free
+  0.00      0.17     0.00        1     0.00     0.00  kd_clear
+  0.00      0.17     0.00        1     0.00     0.00  kd_create
+  0.00      0.17     0.00        1     0.00     0.00  kd_free
+  0.00      0.17     0.00        1     0.00     0.00  mesh_eight_node_hexahedron_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_eight_node_quadrangle_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_element2cell
+  0.00      0.17     0.00        1     0.00     0.00  mesh_four_node_quadrangle_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_four_node_tetrahedron_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_free
+  0.00      0.17     0.00        1     0.00     0.00  mesh_gmsh_readmesh
+  0.00      0.17     0.00        1     0.00     0.00  mesh_gmsh_write_header
+  0.00      0.17     0.00        1     0.00     0.00  mesh_gmsh_write_mesh
+  0.00      0.17     0.00        1     0.00     0.00  mesh_gmsh_write_scalar
+  0.00      0.17     0.00        1     0.00     0.00  mesh_nine_node_quadrangle_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_node_indexes
+  0.00      0.17     0.00        1     0.00     0.00  mesh_one_node_point_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_six_node_prism_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_six_node_triangle_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_ten_node_tetrahedron_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_three_node_line_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_three_node_triangle_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_twenty_node_hexaedron_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_twentyseven_node_hexaedron_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_two_node_line_init
+  0.00      0.17     0.00        1     0.00     0.00  mesh_vtk_write_header
+  0.00      0.17     0.00        1     0.00     0.00  mesh_vtk_write_mesh
+  0.00      0.17     0.00        1     0.00     0.00  mesh_vtk_write_unstructured_mesh
+  0.00      0.17     0.00        1     0.00     0.00  milonga_allocate_global_matrices
+  0.00      0.17     0.00        1     0.00     0.00  milonga_allocate_global_vectors
+  0.00      0.17     0.00        1     0.00     0.00  milonga_debug_cpu_info
+  0.00      0.17     0.00        1     0.00     0.00  milonga_debug_cpu_info_free
+  0.00      0.17     0.00        1     0.00     0.00  milonga_define_result_functions
+  0.00      0.17     0.00        1     0.00   143.45  milonga_instruction_step
+  0.00      0.17     0.00        1     0.00     0.00  milonga_read_boundaries
+  0.00      0.17     0.00        1     0.00     0.00  milonga_set_entry_points
+  0.00      0.17     0.00        1     0.00     0.00  milonga_solve_eigen_slepc
+  0.00      0.17     0.00        1     0.00     0.00  plugin_copyright
+  0.00      0.17     0.00        1     0.00     0.00  plugin_description
+  0.00      0.17     0.00        1     0.00     0.00  plugin_finalize
+  0.00      0.17     0.00        1     0.00     0.00  plugin_init_after_parser
+  0.00      0.17     0.00        1     0.00     0.00  plugin_init_before_parser
+  0.00      0.17     0.00        1     0.00     0.00  plugin_init_before_run
+  0.00      0.17     0.00        1     0.00     0.00  plugin_longversion
+  0.00      0.17     0.00        1     0.00     0.00  plugin_name
+  0.00      0.17     0.00        1     0.00     0.00  plugin_usage
+  0.00      0.17     0.00        1     0.00     0.00  plugin_version
+  0.00      0.17     0.00        1     0.00     0.00  plugin_wasorahmd5
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_allocate_general_elemental_objects
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_free_elemental_objects
+  0.00      0.17     0.00        1     0.00   111.47  sn_elements_matrices_build
+  0.00      0.17     0.00        1     0.00    31.98  sn_elements_normalize_flux
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_problem_init
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_results_fill_flux
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_results_fill_power
+  0.00      0.17     0.00        1     0.00     0.00  sn_elements_set_essential_bc
+  0.00      0.17     0.00        1     0.00     0.00  sn_init_weights
+  0.00      0.17     0.00        1     0.00     0.00  wasora_debug
+  0.00      0.17     0.00        1     0.00     0.00  wasora_define_material
+  0.00      0.17     0.00        1     0.00     0.00  wasora_define_mesh
+  0.00      0.17     0.00        1     0.00     0.00  wasora_evaluate_expression_in_string
+  0.00      0.17     0.00        1     0.00     0.00  wasora_finalize
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_assignments
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_dae
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_files
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_functions
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_instructions
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_matrices
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_print_functions
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_print_vectors
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_prints
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_shm
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_solves
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_vars
+  0.00      0.17     0.00        1     0.00     0.00  wasora_free_vectors
+  0.00      0.17     0.00        1     0.00     0.00  wasora_get_mesh_ptr
+  0.00      0.17     0.00        1     0.00     0.00  wasora_init_after_parser
+  0.00      0.17     0.00        1     0.00     0.01  wasora_init_before_parser
+  0.00      0.17     0.00        1     0.00     0.00  wasora_init_before_run
+  0.00      0.17     0.00        1     0.00    26.55  wasora_instruction_mesh
+  0.00      0.17     0.00        1     0.00     0.00  wasora_instruction_print_function
+  0.00      0.17     0.00        1     0.00     0.00  wasora_instruction_shell
+  0.00      0.17     0.00        1     0.00     0.00  wasora_load_hardcoded_plugin
+  0.00      0.17     0.00        1     0.00     0.01  wasora_mesh_element_types_init
+  0.00      0.17     0.00        1     0.00     0.01  wasora_mesh_init_before_parser
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parse_first_pass
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parse_input_file
+  0.00      0.17     0.00        1     0.00     0.01  wasora_parse_main_input_file
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parser_expression_in_string
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parser_file_path
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parser_keywords_ints
+  0.00      0.17     0.00        1     0.00     0.00  wasora_parser_string_format
+  0.00      0.17     0.00        1     0.00   170.00  wasora_standard_run
+  0.00      0.17     0.00        1     0.00   170.00  wasora_step
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 5.88% of 0.17 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.17                 main [1]
+                0.00    0.17       1/1           wasora_standard_run [2]
+                0.00    0.00       1/1           wasora_parse_main_input_file [24]
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+                0.00    0.00       1/1           wasora_finalize [193]
+-----------------------------------------------
+                0.00    0.17       1/1           main [1]
+[2]    100.0    0.00    0.17       1         wasora_standard_run [2]
+                0.00    0.17       1/1           wasora_step [3]
+                0.00    0.00       1/1           wasora_init_before_run [209]
+                0.00    0.00       1/1           wasora_debug [189]
+-----------------------------------------------
+                0.00    0.17       1/1           wasora_standard_run [2]
+[3]    100.0    0.00    0.17       1         wasora_step [3]
+                0.00    0.14       1/1           milonga_instruction_step [4]
+                0.00    0.03       1/1           wasora_instruction_mesh [14]
+                0.00    0.00       8/8           wasora_instruction_print [123]
+                0.00    0.00       2/2           wasora_instruction_mesh_post [145]
+                0.00    0.00       1/1           wasora_instruction_print_function [210]
+                0.00    0.00       1/1           wasora_instruction_shell [211]
+-----------------------------------------------
+                0.00    0.14       1/1           wasora_step [3]
+[4]     84.4    0.00    0.14       1         milonga_instruction_step [4]
+                0.00    0.11       1/1           sn_elements_matrices_build [6]
+                0.00    0.03       1/1           sn_elements_normalize_flux [12]
+                0.00    0.00       6/6           PetscTime [124]
+                0.00    0.00       6/6           milonga_get_cpu_time [127]
+                0.00    0.00       1/1           sn_elements_problem_init [184]
+                0.00    0.00       1/1           milonga_read_boundaries [168]
+                0.00    0.00       1/1           milonga_solve_eigen_slepc [170]
+                0.00    0.00       1/1           sn_elements_results_fill_flux [185]
+                0.00    0.00       1/1           sn_elements_results_fill_power [186]
+-----------------------------------------------
+                0.02    0.09    1716/1716        sn_elements_matrices_build [6]
+[5]     65.6    0.02    0.09    1716         sn_elements_build_elemental_objects [5]
+                0.00    0.09   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+                0.00    0.00   76544/1148232     mesh_eight_node_hexahedron_h [10]
+                0.00    0.00   50752/52571       wasora_evaluate_expression [44]
+                0.00    0.00   18720/280842      mesh_six_node_prism_h [41]
+                0.00    0.00       2/2           sn_elements_allocate_particular_elemental_objects [142]
+-----------------------------------------------
+                0.00    0.11       1/1           milonga_instruction_step [4]
+[6]     65.6    0.00    0.11       1         sn_elements_matrices_build [6]
+                0.02    0.09    1716/1716        sn_elements_build_elemental_objects [5]
+                0.00    0.00       1/1           sn_elements_allocate_general_elemental_objects [182]
+                0.00    0.00       1/1           sn_elements_set_essential_bc [187]
+                0.00    0.00       1/2           milonga_assembly_objects [138]
+-----------------------------------------------
+                0.00    0.09   12688/12688       sn_elements_build_elemental_objects [5]
+[7]     52.2    0.00    0.09   12688         mesh_compute_fem_objects_at_gauss [7]
+                0.02    0.01   12688/12688       mesh_compute_dhdx [13]
+                0.00    0.02   12688/40704       mesh_integration_weight [8]
+                0.00    0.02   12688/12688       mesh_compute_H [15]
+                0.01    0.00   12688/12688       mesh_compute_B [18]
+                0.00    0.01   12688/12688       mesh_compute_x [20]
+                0.00    0.00   12688/12688       mesh_inverse [52]
+                0.00    0.00   12688/12688       mesh_compute_l [51]
+-----------------------------------------------
+                0.00    0.02   12688/40704       mesh_integral_over_element [11]
+                0.00    0.02   12688/40704       mesh_compute_fem_objects_at_gauss [7]
+                0.00    0.02   15328/40704       wasora_instruction_mesh [14]
+[8]     41.5    0.01    0.06   40704         mesh_integration_weight [8]
+                0.03    0.02   40704/40704       mesh_compute_dxdr [9]
+                0.00    0.01   40704/40704       mesh_compute_h [19]
+                0.00    0.00   40704/53392       mesh_determinant [43]
+                0.00    0.00   15329/15329       mesh_alloc_fem_objects [48]
+-----------------------------------------------
+                0.03    0.02   40704/40704       mesh_integration_weight [8]
+[9]     30.9    0.03    0.02   40704         mesh_compute_dxdr [9]
+                0.01    0.00 2066688/2755800     mesh_eight_node_hexahedron_dhdr [16]
+                0.01    0.00  505440/674046      mesh_six_node_prism_dhdr [17]
+                0.00    0.00   38400/38440       mesh_four_node_quad_dhdr [45]
+                0.00    0.00    4304/56720       mesh_subtract [42]
+                0.00    0.00    2880/2904        mesh_three_node_triang_dhdr [56]
+                0.00    0.00    2152/2832        mesh_normalized_cross [57]
+                0.00    0.00    2152/2152        mesh_cross [61]
+                0.00    0.00    2152/23272       mesh_dot [46]
+-----------------------------------------------
+                0.00    0.00      72/1148232     mesh_init_shape_at_gauss [25]
+                0.00    0.00   76544/1148232     sn_elements_build_elemental_objects [5]
+                0.01    0.00  229632/1148232     mesh_compute_h [19]
+                0.01    0.00  229632/1148232     mesh_compute_x [20]
+                0.02    0.00  612352/1148232     mesh_compute_H [15]
+[10]    23.5    0.04    0.00 1148232         mesh_eight_node_hexahedron_h [10]
+-----------------------------------------------
+                0.01    0.02    1716/1716        sn_elements_normalize_flux [12]
+[11]    18.8    0.01    0.02    1716         mesh_integral_over_element [11]
+                0.00    0.02   12688/40704       mesh_integration_weight [8]
+-----------------------------------------------
+                0.00    0.03       1/1           milonga_instruction_step [4]
+[12]    18.8    0.00    0.03       1         sn_elements_normalize_flux [12]
+                0.01    0.02    1716/1716        mesh_integral_over_element [11]
+                0.00    0.00    1196/2392        mesh_hexahedron_vol [59]
+                0.00    0.00     520/1040        mesh_prism_vol [67]
+-----------------------------------------------
+                0.02    0.01   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[13]    16.2    0.02    0.01   12688         mesh_compute_dhdx [13]
+                0.00    0.00  688896/2755800     mesh_eight_node_hexahedron_dhdr [16]
+                0.00    0.00  168480/674046      mesh_six_node_prism_dhdr [17]
+-----------------------------------------------
+                0.00    0.03       1/1           wasora_step [3]
+[14]    15.6    0.00    0.03       1         wasora_instruction_mesh [14]
+                0.00    0.02   15328/40704       mesh_integration_weight [8]
+                0.00    0.00    1806/1806        kd_insert [64]
+                0.00    0.00       2/4           wasora_vector_init [135]
+                0.00    0.00       1/1           mesh_gmsh_readmesh [154]
+                0.00    0.00       1/1           kd_create [150]
+                0.00    0.00       1/1           mesh_element2cell [152]
+-----------------------------------------------
+                0.00    0.02   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[15]    12.5    0.00    0.02   12688         mesh_compute_H [15]
+                0.02    0.00  612352/1148232     mesh_eight_node_hexahedron_h [10]
+                0.00    0.00  149760/280842      mesh_six_node_prism_h [41]
+-----------------------------------------------
+                0.00    0.00     216/2755800     mesh_init_shape_at_gauss [25]
+                0.00    0.00  688896/2755800     mesh_compute_dhdx [13]
+                0.01    0.00 2066688/2755800     mesh_compute_dxdr [9]
+[16]    11.8    0.02    0.00 2755800         mesh_eight_node_hexahedron_dhdr [16]
+-----------------------------------------------
+                0.00    0.00     126/674046      mesh_init_shape_at_gauss [25]
+                0.00    0.00  168480/674046      mesh_compute_dhdx [13]
+                0.01    0.00  505440/674046      mesh_compute_dxdr [9]
+[17]     5.9    0.01    0.00  674046         mesh_six_node_prism_dhdr [17]
+-----------------------------------------------
+                0.01    0.00   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[18]     5.9    0.01    0.00   12688         mesh_compute_B [18]
+-----------------------------------------------
+                0.00    0.01   40704/40704       mesh_integration_weight [8]
+[19]     4.7    0.00    0.01   40704         mesh_compute_h [19]
+                0.01    0.00  229632/1148232     mesh_eight_node_hexahedron_h [10]
+                0.00    0.00   56160/280842      mesh_six_node_prism_h [41]
+                0.00    0.00    9600/9620        mesh_four_node_quad_h [54]
+                0.00    0.00     720/732         mesh_three_node_triang_h [69]
+-----------------------------------------------
+                0.00    0.01   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[20]     4.7    0.00    0.01   12688         mesh_compute_x [20]
+                0.01    0.00  229632/1148232     mesh_eight_node_hexahedron_h [10]
+                0.00    0.00   56160/280842      mesh_six_node_prism_h [41]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parse_main_input_file [24]
+[21]     0.0    0.00    0.00       1         wasora_init_before_parser [21]
+                0.00    0.00       1/1           wasora_mesh_init_before_parser [23]
+                0.00    0.00      37/70          wasora_define_variable [83]
+                0.00    0.00       3/6           wasora_define_file [128]
+                0.00    0.00       1/1           plugin_init_before_parser [175]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_init_before_parser [23]
+[22]     0.0    0.00    0.00       1         wasora_mesh_element_types_init [22]
+                0.00    0.00       1/1           mesh_six_node_triangle_init [34]
+                0.00    0.00       1/1           mesh_three_node_triangle_init [37]
+                0.00    0.00       1/1           mesh_three_node_line_init [36]
+                0.00    0.00       1/1           mesh_two_node_line_init [40]
+                0.00    0.00       1/1           mesh_nine_node_quadrangle_init [32]
+                0.00    0.00       1/1           mesh_eight_node_quadrangle_init [29]
+                0.00    0.00       1/1           mesh_four_node_quadrangle_init [30]
+                0.00    0.00       1/1           mesh_eight_node_hexahedron_init [28]
+                0.00    0.00       1/1           mesh_ten_node_tetrahedron_init [35]
+                0.00    0.00       1/1           mesh_four_node_tetrahedron_init [31]
+                0.00    0.00       1/1           mesh_six_node_prism_init [33]
+                0.00    0.00       1/1           mesh_twentyseven_node_hexaedron_init [39]
+                0.00    0.00       1/1           mesh_twenty_node_hexaedron_init [38]
+                0.00    0.00       1/1           mesh_one_node_point_init [159]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_init_before_parser [21]
+[23]     0.0    0.00    0.00       1         wasora_mesh_init_before_parser [23]
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+                0.00    0.00       7/70          wasora_define_variable [83]
+                0.00    0.00       3/3           wasora_realloc_variable_ptr [137]
+                0.00    0.00       1/8           wasora_define_vector [121]
+                0.00    0.00       1/4           wasora_vector_init [135]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[24]     0.0    0.00    0.00       1         wasora_parse_main_input_file [24]
+                0.00    0.00       1/1           wasora_init_before_parser [21]
+                0.00    0.00       1/1           wasora_parse_first_pass [213]
+                0.00    0.00       1/1           wasora_parse_input_file [214]
+                0.00    0.00       1/1           wasora_init_after_parser [208]
+-----------------------------------------------
+                0.00    0.00       2/26          mesh_eight_node_quadrangle_init [29]
+                0.00    0.00       2/26          mesh_eight_node_hexahedron_init [28]
+                0.00    0.00       2/26          mesh_nine_node_quadrangle_init [32]
+                0.00    0.00       2/26          mesh_three_node_triangle_init [37]
+                0.00    0.00       2/26          mesh_six_node_prism_init [33]
+                0.00    0.00       2/26          mesh_three_node_line_init [36]
+                0.00    0.00       2/26          mesh_two_node_line_init [40]
+                0.00    0.00       2/26          mesh_four_node_quadrangle_init [30]
+                0.00    0.00       2/26          mesh_six_node_triangle_init [34]
+                0.00    0.00       4/26          mesh_hexa_gauss27_init [26]
+                0.00    0.00       4/26          mesh_tetrahedron_gauss_init [27]
+[25]     0.0    0.00    0.00      26         mesh_init_shape_at_gauss [25]
+                0.00    0.00      72/1148232     mesh_eight_node_hexahedron_h [10]
+                0.00    0.00     126/674046      mesh_six_node_prism_dhdr [17]
+                0.00    0.00     216/2755800     mesh_eight_node_hexahedron_dhdr [16]
+                0.00    0.00    2268/2268        mesh_twentyseven_node_hexahedron_dhdr [60]
+                0.00    0.00    1680/1680        mesh_twenty_node_hexahedron_dhdr [66]
+                0.00    0.00     756/756         mesh_twentyseven_node_hexahedron_h [68]
+                0.00    0.00     560/560         mesh_twenty_node_hexahedron_h [73]
+                0.00    0.00     180/180         mesh_nine_node_quad_dhdr [74]
+                0.00    0.00     160/160         mesh_eight_node_quad_dhdr [76]
+                0.00    0.00     150/150         mesh_ten_node_tetrahedron_dhdr [77]
+                0.00    0.00      90/90          mesh_nine_node_quad_h [81]
+                0.00    0.00      80/80          mesh_eight_node_quad_h [82]
+                0.00    0.00      60/60          mesh_four_node_tetrahedron_dhdr [85]
+                0.00    0.00      50/50          mesh_ten_node_tetrahedron_h [86]
+                0.00    0.00      48/48          mesh_six_node_triang_dhdr [88]
+                0.00    0.00      42/280842      mesh_six_node_prism_h [41]
+                0.00    0.00      40/38440       mesh_four_node_quad_dhdr [45]
+                0.00    0.00      24/24          mesh_six_node_triang_h [96]
+                0.00    0.00      24/2904        mesh_three_node_triang_dhdr [56]
+                0.00    0.00      20/20          mesh_four_node_tetrahedron_h [98]
+                0.00    0.00      20/9620        mesh_four_node_quad_h [54]
+                0.00    0.00      12/732         mesh_three_node_triang_h [69]
+                0.00    0.00       9/9           mesh_three_node_line_h [117]
+                0.00    0.00       9/9           mesh_three_node_line_dhdr [116]
+                0.00    0.00       6/6           mesh_two_node_line_h [126]
+                0.00    0.00       6/6           mesh_two_node_line_dhdr [125]
+-----------------------------------------------
+                0.00    0.00       1/2           mesh_twenty_node_hexaedron_init [38]
+                0.00    0.00       1/2           mesh_twentyseven_node_hexaedron_init [39]
+[26]     0.0    0.00    0.00       2         mesh_hexa_gauss27_init [26]
+                0.00    0.00       4/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       4/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/2           mesh_ten_node_tetrahedron_init [35]
+                0.00    0.00       1/2           mesh_four_node_tetrahedron_init [31]
+[27]     0.0    0.00    0.00       2         mesh_tetrahedron_gauss_init [27]
+                0.00    0.00       4/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       4/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[28]     0.0    0.00    0.00       1         mesh_eight_node_hexahedron_init [28]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[29]     0.0    0.00    0.00       1         mesh_eight_node_quadrangle_init [29]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       8/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00       4/50          wasora_mesh_compute_coords_from_parent [87]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[30]     0.0    0.00    0.00       1         mesh_four_node_quadrangle_init [30]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[31]     0.0    0.00    0.00       1         mesh_four_node_tetrahedron_init [31]
+                0.00    0.00       1/2           mesh_tetrahedron_gauss_init [27]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[32]     0.0    0.00    0.00       1         mesh_nine_node_quadrangle_init [32]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00      12/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00       5/50          wasora_mesh_compute_coords_from_parent [87]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[33]     0.0    0.00    0.00       1         mesh_six_node_prism_init [33]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[34]     0.0    0.00    0.00       1         mesh_six_node_triangle_init [34]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       6/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00       3/50          wasora_mesh_compute_coords_from_parent [87]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[35]     0.0    0.00    0.00       1         mesh_ten_node_tetrahedron_init [35]
+                0.00    0.00       1/2           mesh_tetrahedron_gauss_init [27]
+                0.00    0.00      12/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00       6/50          wasora_mesh_compute_coords_from_parent [87]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[36]     0.0    0.00    0.00       1         mesh_three_node_line_init [36]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+                0.00    0.00       1/50          wasora_mesh_compute_coords_from_parent [87]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[37]     0.0    0.00    0.00       1         mesh_three_node_triangle_init [37]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[38]     0.0    0.00    0.00       1         mesh_twenty_node_hexaedron_init [38]
+                0.00    0.00       1/2           mesh_hexa_gauss27_init [26]
+                0.00    0.00      24/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00      12/50          wasora_mesh_compute_coords_from_parent [87]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[39]     0.0    0.00    0.00       1         mesh_twentyseven_node_hexaedron_init [39]
+                0.00    0.00       1/2           mesh_hexa_gauss27_init [26]
+                0.00    0.00      56/120         wasora_mesh_add_node_parent [78]
+                0.00    0.00      19/50          wasora_mesh_compute_coords_from_parent [87]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[40]     0.0    0.00    0.00       1         mesh_two_node_line_init [40]
+                0.00    0.00       2/26          mesh_init_shape_at_gauss [25]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00      42/280842      mesh_init_shape_at_gauss [25]
+                0.00    0.00   18720/280842      sn_elements_build_elemental_objects [5]
+                0.00    0.00   56160/280842      mesh_compute_h [19]
+                0.00    0.00   56160/280842      mesh_compute_x [20]
+                0.00    0.00  149760/280842      mesh_compute_H [15]
+[41]     0.0    0.00    0.00  280842         mesh_six_node_prism_h [41]
+-----------------------------------------------
+                0.00    0.00    4304/56720       mesh_compute_dxdr [9]
+                0.00    0.00    9360/56720       mesh_prism_vol [67]
+                0.00    0.00   43056/56720       mesh_hexahedron_vol [59]
+[42]     0.0    0.00    0.00   56720         mesh_subtract [42]
+-----------------------------------------------
+                0.00    0.00   12688/53392       mesh_inverse [52]
+                0.00    0.00   40704/53392       mesh_integration_weight [8]
+[43]     0.0    0.00    0.00   53392         mesh_determinant [43]
+-----------------------------------------------
+                0.00    0.00       1/52571       wasora_evaluate_expression_in_string [192]
+                0.00    0.00       4/52571       mesh_gmsh_readmesh [154]
+                0.00    0.00       8/52571       wasora_instruction_print [123]
+                0.00    0.00    1806/52571       sn_elements_results_fill_power [186]
+                0.00    0.00   50752/52571       sn_elements_build_elemental_objects [5]
+[44]     0.0    0.00    0.00   52571         wasora_evaluate_expression [44]
+-----------------------------------------------
+                0.00    0.00      40/38440       mesh_init_shape_at_gauss [25]
+                0.00    0.00   38400/38440       mesh_compute_dxdr [9]
+[45]     0.0    0.00    0.00   38440         mesh_four_node_quad_dhdr [45]
+-----------------------------------------------
+                0.00    0.00    2152/23272       mesh_compute_dxdr [9]
+                0.00    0.00   21120/23272       sn_elements_add_vacuum_bc [58]
+[46]     0.0    0.00    0.00   23272         mesh_dot [46]
+-----------------------------------------------
+                0.00    0.00    3120/17472       mesh_prism_vol [67]
+                0.00    0.00   14352/17472       mesh_hexahedron_vol [59]
+[47]     0.0    0.00    0.00   17472         mesh_cross_dot [47]
+-----------------------------------------------
+                0.00    0.00   15329/15329       mesh_integration_weight [8]
+[48]     0.0    0.00    0.00   15329         mesh_alloc_fem_objects [48]
+-----------------------------------------------
+                0.00    0.00   15328/15328       mesh_gmsh_readmesh [154]
+[49]     0.0    0.00    0.00   15328         mesh_add_element_to_list [49]
+-----------------------------------------------
+                0.00    0.00   12688/12688       mesh_gmsh_readmesh [154]
+[50]     0.0    0.00    0.00   12688         mesh_add_material_to_list [50]
+-----------------------------------------------
+                0.00    0.00   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[51]     0.0    0.00    0.00   12688         mesh_compute_l [51]
+-----------------------------------------------
+                0.00    0.00   12688/12688       mesh_compute_fem_objects_at_gauss [7]
+[52]     0.0    0.00    0.00   12688         mesh_inverse [52]
+                0.00    0.00   12688/53392       mesh_determinant [43]
+-----------------------------------------------
+                0.00    0.00   10560/10560       sn_elements_add_vacuum_bc [58]
+[53]     0.0    0.00    0.00   10560         PetscMemcpy [53]
+-----------------------------------------------
+                0.00    0.00      20/9620        mesh_init_shape_at_gauss [25]
+                0.00    0.00    9600/9620        mesh_compute_h [19]
+[54]     0.0    0.00    0.00    9620         mesh_four_node_quad_h [54]
+-----------------------------------------------
+                0.00    0.00    1360/3076        sn_elements_compute_outward_normal [72]
+                0.00    0.00    1716/3076        mesh_element2cell [152]
+[55]     0.0    0.00    0.00    3076         mesh_compute_element_barycenter [55]
+-----------------------------------------------
+                0.00    0.00      24/2904        mesh_init_shape_at_gauss [25]
+                0.00    0.00    2880/2904        mesh_compute_dxdr [9]
+[56]     0.0    0.00    0.00    2904         mesh_three_node_triang_dhdr [56]
+-----------------------------------------------
+                0.00    0.00     680/2832        sn_elements_compute_outward_normal [72]
+                0.00    0.00    2152/2832        mesh_compute_dxdr [9]
+[57]     0.0    0.00    0.00    2832         mesh_normalized_cross [57]
+-----------------------------------------------
+                0.00    0.00    2640/2640        sn_elements_set_essential_bc [187]
+[58]     0.0    0.00    0.00    2640         sn_elements_add_vacuum_bc [58]
+                0.00    0.00   21120/23272       mesh_dot [46]
+                0.00    0.00   10560/10560       PetscMemcpy [53]
+-----------------------------------------------
+                0.00    0.00    1196/2392        sn_elements_normalize_flux [12]
+                0.00    0.00    1196/2392        mesh_element2cell [152]
+[59]     0.0    0.00    0.00    2392         mesh_hexahedron_vol [59]
+                0.00    0.00   43056/56720       mesh_subtract [42]
+                0.00    0.00   14352/17472       mesh_cross_dot [47]
+-----------------------------------------------
+                0.00    0.00    2268/2268        mesh_init_shape_at_gauss [25]
+[60]     0.0    0.00    0.00    2268         mesh_twentyseven_node_hexahedron_dhdr [60]
+-----------------------------------------------
+                0.00    0.00    2152/2152        mesh_compute_dxdr [9]
+[61]     0.0    0.00    0.00    2152         mesh_cross [61]
+-----------------------------------------------
+                0.00    0.00    1964/1964        mesh_find_element_volumetric_neighbor [70]
+[62]     0.0    0.00    0.00    1964         mesh_count_common_nodes [62]
+-----------------------------------------------
+                               39254             insert_rec [63]
+                0.00    0.00    1806/1806        kd_insert [64]
+[63]     0.0    0.00    0.00    1806+39254   insert_rec [63]
+                               39254             insert_rec [63]
+-----------------------------------------------
+                0.00    0.00    1806/1806        wasora_instruction_mesh [14]
+[64]     0.0    0.00    0.00    1806         kd_insert [64]
+                0.00    0.00    1806/1806        insert_rec [63]
+                0.00    0.00    1805/1805        hyperrect_extend [65]
+                0.00    0.00       1/1           hyperrect_create [147]
+-----------------------------------------------
+                0.00    0.00    1805/1805        kd_insert [64]
+[65]     0.0    0.00    0.00    1805         hyperrect_extend [65]
+-----------------------------------------------
+                0.00    0.00    1680/1680        mesh_init_shape_at_gauss [25]
+[66]     0.0    0.00    0.00    1680         mesh_twenty_node_hexahedron_dhdr [66]
+-----------------------------------------------
+                0.00    0.00     520/1040        sn_elements_normalize_flux [12]
+                0.00    0.00     520/1040        mesh_element2cell [152]
+[67]     0.0    0.00    0.00    1040         mesh_prism_vol [67]
+                0.00    0.00    9360/56720       mesh_subtract [42]
+                0.00    0.00    3120/17472       mesh_cross_dot [47]
+-----------------------------------------------
+                0.00    0.00     756/756         mesh_init_shape_at_gauss [25]
+[68]     0.0    0.00    0.00     756         mesh_twentyseven_node_hexahedron_h [68]
+-----------------------------------------------
+                0.00    0.00      12/732         mesh_init_shape_at_gauss [25]
+                0.00    0.00     720/732         mesh_compute_h [19]
+[69]     0.0    0.00    0.00     732         mesh_three_node_triang_h [69]
+-----------------------------------------------
+                0.00    0.00     680/680         sn_elements_compute_outward_normal [72]
+[70]     0.0    0.00    0.00     680         mesh_find_element_volumetric_neighbor [70]
+                0.00    0.00    1964/1964        mesh_count_common_nodes [62]
+-----------------------------------------------
+                0.00    0.00     680/680         sn_elements_compute_outward_normal [72]
+[71]     0.0    0.00    0.00     680         mesh_subtract_dot [71]
+-----------------------------------------------
+                0.00    0.00     680/680         sn_elements_set_essential_bc [187]
+[72]     0.0    0.00    0.00     680         sn_elements_compute_outward_normal [72]
+                0.00    0.00    1360/3076        mesh_compute_element_barycenter [55]
+                0.00    0.00     680/680         mesh_find_element_volumetric_neighbor [70]
+                0.00    0.00     680/2832        mesh_normalized_cross [57]
+                0.00    0.00     680/680         mesh_subtract_dot [71]
+-----------------------------------------------
+                0.00    0.00     560/560         mesh_init_shape_at_gauss [25]
+[73]     0.0    0.00    0.00     560         mesh_twenty_node_hexahedron_h [73]
+-----------------------------------------------
+                0.00    0.00     180/180         mesh_init_shape_at_gauss [25]
+[74]     0.0    0.00    0.00     180         mesh_nine_node_quad_dhdr [74]
+-----------------------------------------------
+                0.00    0.00       1/166         wasora_parser_expression_in_string [215]
+                0.00    0.00       1/166         wasora_parser_string_format [218]
+                0.00    0.00       1/166         wasora_parser_keywords_ints [217]
+                0.00    0.00      15/166         plugin_parse_line [130]
+                0.00    0.00      19/166         wasora_parse_first_pass [213]
+                0.00    0.00      29/166         wasora_mesh_parse_line [119]
+                0.00    0.00      30/166         wasora_parser_string [92]
+                0.00    0.00      70/166         wasora_parse_line [99]
+[75]     0.0    0.00    0.00     166         wasora_get_next_token [75]
+-----------------------------------------------
+                0.00    0.00     160/160         mesh_init_shape_at_gauss [25]
+[76]     0.0    0.00    0.00     160         mesh_eight_node_quad_dhdr [76]
+-----------------------------------------------
+                0.00    0.00     150/150         mesh_init_shape_at_gauss [25]
+[77]     0.0    0.00    0.00     150         mesh_ten_node_tetrahedron_dhdr [77]
+-----------------------------------------------
+                0.00    0.00       2/120         mesh_three_node_line_init [36]
+                0.00    0.00       6/120         mesh_six_node_triangle_init [34]
+                0.00    0.00       8/120         mesh_eight_node_quadrangle_init [29]
+                0.00    0.00      12/120         mesh_nine_node_quadrangle_init [32]
+                0.00    0.00      12/120         mesh_ten_node_tetrahedron_init [35]
+                0.00    0.00      24/120         mesh_twenty_node_hexaedron_init [38]
+                0.00    0.00      56/120         mesh_twentyseven_node_hexaedron_init [39]
+[78]     0.0    0.00    0.00     120         wasora_mesh_add_node_parent [78]
+-----------------------------------------------
+                0.00    0.00      50/100         wasora_parse_first_pass [213]
+                0.00    0.00      50/100         wasora_parse_input_file [214]
+[79]     0.0    0.00    0.00     100         wasora_read_line [79]
+-----------------------------------------------
+                0.00    0.00       2/98          wasora_mesh_parse_line [119]
+                0.00    0.00       8/98          wasora_define_vector [121]
+                0.00    0.00      18/98          wasora_define_function [101]
+                0.00    0.00      70/98          wasora_define_variable [83]
+[80]     0.0    0.00    0.00      98         wasora_check_name [80]
+-----------------------------------------------
+                0.00    0.00      90/90          mesh_init_shape_at_gauss [25]
+[81]     0.0    0.00    0.00      90         mesh_nine_node_quad_h [81]
+-----------------------------------------------
+                0.00    0.00      80/80          mesh_init_shape_at_gauss [25]
+[82]     0.0    0.00    0.00      80         mesh_eight_node_quad_h [82]
+-----------------------------------------------
+                0.00    0.00       2/70          wasora_mesh_parse_line [119]
+                0.00    0.00       7/70          wasora_mesh_init_before_parser [23]
+                0.00    0.00      24/70          plugin_init_before_parser [175]
+                0.00    0.00      37/70          wasora_init_before_parser [21]
+[83]     0.0    0.00    0.00      70         wasora_define_variable [83]
+                0.00    0.00      70/98          wasora_check_name [80]
+-----------------------------------------------
+                0.00    0.00      70/70          wasora_free_vars [205]
+[84]     0.0    0.00    0.00      70         wasora_free_var [84]
+-----------------------------------------------
+                0.00    0.00      60/60          mesh_init_shape_at_gauss [25]
+[85]     0.0    0.00    0.00      60         mesh_four_node_tetrahedron_dhdr [85]
+-----------------------------------------------
+                0.00    0.00      50/50          mesh_init_shape_at_gauss [25]
+[86]     0.0    0.00    0.00      50         mesh_ten_node_tetrahedron_h [86]
+-----------------------------------------------
+                0.00    0.00       1/50          mesh_three_node_line_init [36]
+                0.00    0.00       3/50          mesh_six_node_triangle_init [34]
+                0.00    0.00       4/50          mesh_eight_node_quadrangle_init [29]
+                0.00    0.00       5/50          mesh_nine_node_quadrangle_init [32]
+                0.00    0.00       6/50          mesh_ten_node_tetrahedron_init [35]
+                0.00    0.00      12/50          mesh_twenty_node_hexaedron_init [38]
+                0.00    0.00      19/50          mesh_twentyseven_node_hexaedron_init [39]
+[87]     0.0    0.00    0.00      50         wasora_mesh_compute_coords_from_parent [87]
+-----------------------------------------------
+                0.00    0.00      48/48          mesh_init_shape_at_gauss [25]
+[88]     0.0    0.00    0.00      48         mesh_six_node_triang_dhdr [88]
+-----------------------------------------------
+                0.00    0.00      34/34          wasora_parse_madeup_expression [94]
+[89]     0.0    0.00    0.00      34         wasora_parse_factor [89]
+                0.00    0.00      16/16          wasora_ends_in_zero [106]
+                0.00    0.00      16/16          wasora_ends_in_init [105]
+                0.00    0.00      16/24          wasora_get_matrix_ptr [97]
+                0.00    0.00      16/25          wasora_get_vector_ptr [95]
+                0.00    0.00      16/16          wasora_get_variable_ptr [110]
+                0.00    0.00      16/16          wasora_get_builtin_function_ptr [107]
+                0.00    0.00      16/16          wasora_get_builtin_vectorfunction_ptr [109]
+                0.00    0.00      16/16          wasora_get_builtin_functional_ptr [108]
+                0.00    0.00      16/18          wasora_get_function_ptr [104]
+-----------------------------------------------
+                0.00    0.00       1/32          wasora_evaluate_expression_in_string [192]
+                0.00    0.00       1/32          wasora_free_print_functions [200]
+                0.00    0.00      30/32          wasora_free_prints [202]
+[90]     0.0    0.00    0.00      32         wasora_destroy_expression [90]
+-----------------------------------------------
+                0.00    0.00      30/30          wasora_parse_line [99]
+[91]     0.0    0.00    0.00      30         wasora_parser_match_keyword_expression [91]
+-----------------------------------------------
+                0.00    0.00       1/30          wasora_parser_file_path [216]
+                0.00    0.00       6/30          plugin_parse_line [130]
+                0.00    0.00       8/30          wasora_mesh_parse_line [119]
+                0.00    0.00      15/30          wasora_parse_line [99]
+[92]     0.0    0.00    0.00      30         wasora_parser_string [92]
+                0.00    0.00      30/166         wasora_get_next_token [75]
+-----------------------------------------------
+                0.00    0.00       2/28          mesh_eight_node_quadrangle_init [29]
+                0.00    0.00       2/28          mesh_eight_node_hexahedron_init [28]
+                0.00    0.00       2/28          mesh_nine_node_quadrangle_init [32]
+                0.00    0.00       2/28          mesh_three_node_triangle_init [37]
+                0.00    0.00       2/28          mesh_six_node_prism_init [33]
+                0.00    0.00       2/28          mesh_three_node_line_init [36]
+                0.00    0.00       2/28          mesh_two_node_line_init [40]
+                0.00    0.00       2/28          mesh_one_node_point_init [159]
+                0.00    0.00       2/28          mesh_four_node_quadrangle_init [30]
+                0.00    0.00       2/28          mesh_six_node_triangle_init [34]
+                0.00    0.00       4/28          mesh_hexa_gauss27_init [26]
+                0.00    0.00       4/28          mesh_tetrahedron_gauss_init [27]
+[93]     0.0    0.00    0.00      28         mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00      26/26          wasora_parse_expression [113]
+[94]     0.0    0.00    0.00      26         wasora_parse_madeup_expression [94]
+                0.00    0.00      34/34          wasora_parse_factor [89]
+-----------------------------------------------
+                0.00    0.00       1/25          plugin_init_after_parser [174]
+                0.00    0.00       8/25          wasora_parse_line [99]
+                0.00    0.00      16/25          wasora_parse_factor [89]
+[95]     0.0    0.00    0.00      25         wasora_get_vector_ptr [95]
+-----------------------------------------------
+                0.00    0.00      24/24          mesh_init_shape_at_gauss [25]
+[96]     0.0    0.00    0.00      24         mesh_six_node_triang_h [96]
+-----------------------------------------------
+                0.00    0.00       8/24          wasora_parse_line [99]
+                0.00    0.00      16/24          wasora_parse_factor [89]
+[97]     0.0    0.00    0.00      24         wasora_get_matrix_ptr [97]
+-----------------------------------------------
+                0.00    0.00      20/20          mesh_init_shape_at_gauss [25]
+[98]     0.0    0.00    0.00      20         mesh_four_node_tetrahedron_h [98]
+-----------------------------------------------
+                0.00    0.00      19/19          wasora_parse_input_file [214]
+[99]     0.0    0.00    0.00      19         wasora_parse_line [99]
+                0.00    0.00      70/166         wasora_get_next_token [75]
+                0.00    0.00      30/30          wasora_parser_match_keyword_expression [91]
+                0.00    0.00      15/30          wasora_parser_string [92]
+                0.00    0.00      10/14          wasora_define_instruction [111]
+                0.00    0.00       9/9           wasora_mesh_parse_line [119]
+                0.00    0.00       8/24          wasora_get_matrix_ptr [97]
+                0.00    0.00       8/25          wasora_get_vector_ptr [95]
+                0.00    0.00       8/13          wasora_parse_expression [113]
+                0.00    0.00       1/18          wasora_get_function_ptr [104]
+                0.00    0.00       1/1           wasora_parser_string_format [218]
+-----------------------------------------------
+                0.00    0.00      19/19          wasora_parse_input_file [214]
+[100]    0.0    0.00    0.00      19         wasora_pop_error_message [100]
+-----------------------------------------------
+                0.00    0.00       4/18          wasora_define_physical_property [131]
+                0.00    0.00       4/18          wasora_define_property_data [132]
+                0.00    0.00      10/18          milonga_define_result_functions [167]
+[101]    0.0    0.00    0.00      18         wasora_define_function [101]
+                0.00    0.00      18/98          wasora_check_name [80]
+-----------------------------------------------
+                0.00    0.00      18/18          wasora_free_functions [197]
+[102]    0.0    0.00    0.00      18         wasora_free_function [102]
+-----------------------------------------------
+                0.00    0.00       1/18          wasora_instruction_print_function [210]
+                0.00    0.00       8/18          wasora_instruction_mesh_post [145]
+                0.00    0.00       9/18          mesh_vtk_write_scalar [118]
+[103]    0.0    0.00    0.00      18         wasora_function_init [103]
+-----------------------------------------------
+                0.00    0.00       1/18          wasora_parse_line [99]
+                0.00    0.00       1/18          wasora_mesh_parse_line [119]
+                0.00    0.00      16/18          wasora_parse_factor [89]
+[104]    0.0    0.00    0.00      18         wasora_get_function_ptr [104]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[105]    0.0    0.00    0.00      16         wasora_ends_in_init [105]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[106]    0.0    0.00    0.00      16         wasora_ends_in_zero [106]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[107]    0.0    0.00    0.00      16         wasora_get_builtin_function_ptr [107]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[108]    0.0    0.00    0.00      16         wasora_get_builtin_functional_ptr [108]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[109]    0.0    0.00    0.00      16         wasora_get_builtin_vectorfunction_ptr [109]
+-----------------------------------------------
+                0.00    0.00      16/16          wasora_parse_factor [89]
+[110]    0.0    0.00    0.00      16         wasora_get_variable_ptr [110]
+-----------------------------------------------
+                0.00    0.00       2/14          plugin_parse_line [130]
+                0.00    0.00       2/14          wasora_mesh_parse_line [119]
+                0.00    0.00      10/14          wasora_parse_line [99]
+[111]    0.0    0.00    0.00      14         wasora_define_instruction [111]
+-----------------------------------------------
+                0.00    0.00      13/13          wasora_parse_expression [113]
+[112]    0.0    0.00    0.00      13         wasora_add_leading_zeros [112]
+-----------------------------------------------
+                0.00    0.00       1/13          wasora_evaluate_expression_in_string [192]
+                0.00    0.00       4/13          wasora_define_property_data [132]
+                0.00    0.00       8/13          wasora_parse_line [99]
+[113]    0.0    0.00    0.00      13         wasora_parse_expression [113]
+                0.00    0.00      26/26          wasora_parse_madeup_expression [94]
+                0.00    0.00      13/13          wasora_strip_blanks [114]
+                0.00    0.00      13/13          wasora_add_leading_zeros [112]
+-----------------------------------------------
+                0.00    0.00      13/13          wasora_parse_expression [113]
+[114]    0.0    0.00    0.00      13         wasora_strip_blanks [114]
+-----------------------------------------------
+                0.00    0.00      10/10          sn_elements_problem_init [184]
+[115]    0.0    0.00    0.00      10         sn_elements_results_fill_args [115]
+-----------------------------------------------
+                0.00    0.00       9/9           mesh_init_shape_at_gauss [25]
+[116]    0.0    0.00    0.00       9         mesh_three_node_line_dhdr [116]
+-----------------------------------------------
+                0.00    0.00       9/9           mesh_init_shape_at_gauss [25]
+[117]    0.0    0.00    0.00       9         mesh_three_node_line_h [117]
+-----------------------------------------------
+                0.00    0.00       9/9           wasora_instruction_mesh_post [145]
+[118]    0.0    0.00    0.00       9         mesh_vtk_write_scalar [118]
+                0.00    0.00       9/18          wasora_function_init [103]
+-----------------------------------------------
+                0.00    0.00       9/9           wasora_parse_line [99]
+[119]    0.0    0.00    0.00       9         wasora_mesh_parse_line [119]
+                0.00    0.00      29/166         wasora_get_next_token [75]
+                0.00    0.00       8/30          wasora_parser_string [92]
+                0.00    0.00       6/8           wasora_define_vector [121]
+                0.00    0.00       4/4           wasora_define_property_data [132]
+                0.00    0.00       2/14          wasora_define_instruction [111]
+                0.00    0.00       2/2           wasora_define_physical_entity [144]
+                0.00    0.00       2/98          wasora_check_name [80]
+                0.00    0.00       2/70          wasora_define_variable [83]
+                0.00    0.00       1/1           wasora_parser_file_path [216]
+                0.00    0.00       1/1           wasora_parser_expression_in_string [215]
+                0.00    0.00       1/1           wasora_define_mesh [191]
+                0.00    0.00       1/6           wasora_define_file [128]
+                0.00    0.00       1/18          wasora_get_function_ptr [104]
+                0.00    0.00       1/1           wasora_define_material [190]
+-----------------------------------------------
+                0.00    0.00       8/8           plugin_init_after_parser [174]
+[120]    0.0    0.00    0.00       8         milonga_resolve_xs_expr [120]
+-----------------------------------------------
+                0.00    0.00       1/8           plugin_init_after_parser [174]
+                0.00    0.00       1/8           wasora_mesh_init_before_parser [23]
+                0.00    0.00       6/8           wasora_mesh_parse_line [119]
+[121]    0.0    0.00    0.00       8         wasora_define_vector [121]
+                0.00    0.00       8/98          wasora_check_name [80]
+-----------------------------------------------
+                0.00    0.00       8/8           wasora_free_vectors [206]
+[122]    0.0    0.00    0.00       8         wasora_free_vector [122]
+-----------------------------------------------
+                0.00    0.00       8/8           wasora_step [3]
+[123]    0.0    0.00    0.00       8         wasora_instruction_print [123]
+                0.00    0.00       8/52571       wasora_evaluate_expression [44]
+-----------------------------------------------
+                0.00    0.00       6/6           milonga_instruction_step [4]
+[124]    0.0    0.00    0.00       6         PetscTime [124]
+-----------------------------------------------
+                0.00    0.00       6/6           mesh_init_shape_at_gauss [25]
+[125]    0.0    0.00    0.00       6         mesh_two_node_line_dhdr [125]
+-----------------------------------------------
+                0.00    0.00       6/6           mesh_init_shape_at_gauss [25]
+[126]    0.0    0.00    0.00       6         mesh_two_node_line_h [126]
+-----------------------------------------------
+                0.00    0.00       6/6           milonga_instruction_step [4]
+[127]    0.0    0.00    0.00       6         milonga_get_cpu_time [127]
+-----------------------------------------------
+                0.00    0.00       1/6           plugin_parse_line [130]
+                0.00    0.00       1/6           wasora_parser_file_path [216]
+                0.00    0.00       1/6           wasora_mesh_parse_line [119]
+                0.00    0.00       3/6           wasora_init_before_parser [21]
+[128]    0.0    0.00    0.00       6         wasora_define_file [128]
+-----------------------------------------------
+                0.00    0.00       1/5           wasora_parse_first_pass [213]
+                0.00    0.00       1/5           wasora_parse_input_file [214]
+                0.00    0.00       3/5           wasora_instruction_open_file [136]
+[129]    0.0    0.00    0.00       5         wasora_fopen [129]
+-----------------------------------------------
+                0.00    0.00       4/4           wasora_parse_input_file [214]
+[130]    0.0    0.00    0.00       4         plugin_parse_line [130]
+                0.00    0.00      15/166         wasora_get_next_token [75]
+                0.00    0.00       6/30          wasora_parser_string [92]
+                0.00    0.00       2/14          wasora_define_instruction [111]
+                0.00    0.00       1/1           wasora_parser_keywords_ints [217]
+                0.00    0.00       1/1           milonga_define_result_functions [167]
+                0.00    0.00       1/6           wasora_define_file [128]
+-----------------------------------------------
+                0.00    0.00       4/4           wasora_define_property_data [132]
+[131]    0.0    0.00    0.00       4         wasora_define_physical_property [131]
+                0.00    0.00       4/18          wasora_define_function [101]
+-----------------------------------------------
+                0.00    0.00       4/4           wasora_mesh_parse_line [119]
+[132]    0.0    0.00    0.00       4         wasora_define_property_data [132]
+                0.00    0.00       4/4           wasora_define_physical_property [131]
+                0.00    0.00       4/13          wasora_parse_expression [113]
+                0.00    0.00       4/18          wasora_define_function [101]
+-----------------------------------------------
+                0.00    0.00       1/4           wasora_instruction_shell [211]
+                0.00    0.00       3/4           wasora_instruction_open_file [136]
+[133]    0.0    0.00    0.00       4         wasora_evaluate_string [133]
+-----------------------------------------------
+                0.00    0.00       4/4           wasora_free_files [196]
+[134]    0.0    0.00    0.00       4         wasora_instruction_close_file [134]
+-----------------------------------------------
+                0.00    0.00       1/4           plugin_init_after_parser [174]
+                0.00    0.00       1/4           wasora_mesh_init_before_parser [23]
+                0.00    0.00       2/4           wasora_instruction_mesh [14]
+[135]    0.0    0.00    0.00       4         wasora_vector_init [135]
+-----------------------------------------------
+                0.00    0.00       1/3           mesh_gmsh_readmesh [154]
+                0.00    0.00       2/3           wasora_instruction_mesh_post [145]
+[136]    0.0    0.00    0.00       3         wasora_instruction_open_file [136]
+                0.00    0.00       3/4           wasora_evaluate_string [133]
+                0.00    0.00       3/5           wasora_fopen [129]
+-----------------------------------------------
+                0.00    0.00       3/3           wasora_mesh_init_before_parser [23]
+[137]    0.0    0.00    0.00       3         wasora_realloc_variable_ptr [137]
+-----------------------------------------------
+                0.00    0.00       1/2           sn_elements_matrices_build [6]
+                0.00    0.00       1/2           sn_elements_set_essential_bc [187]
+[138]    0.0    0.00    0.00       2         milonga_assembly_objects [138]
+-----------------------------------------------
+                0.00    0.00       1/2           plugin_longversion [177]
+                0.00    0.00       1/2           milonga_debug_cpu_info [165]
+[139]    0.0    0.00    0.00       2         milonga_debug_n_processors [139]
+-----------------------------------------------
+                0.00    0.00       1/2           plugin_init_before_run [176]
+                0.00    0.00       1/2           plugin_finalize [173]
+[140]    0.0    0.00    0.00       2         milonga_free_global_matrices [140]
+-----------------------------------------------
+                0.00    0.00       1/2           plugin_init_before_run [176]
+                0.00    0.00       1/2           plugin_finalize [173]
+[141]    0.0    0.00    0.00       2         milonga_free_global_vectors [141]
+-----------------------------------------------
+                0.00    0.00       2/2           sn_elements_build_elemental_objects [5]
+[142]    0.0    0.00    0.00       2         sn_elements_allocate_particular_elemental_objects [142]
+-----------------------------------------------
+                0.00    0.00       1/2           plugin_init_before_run [176]
+                0.00    0.00       1/2           plugin_finalize [173]
+[143]    0.0    0.00    0.00       2         sn_elements_problem_free [143]
+                0.00    0.00       1/1           sn_elements_free_elemental_objects [183]
+                0.00    0.00       1/1           mesh_free [153]
+-----------------------------------------------
+                0.00    0.00       2/2           wasora_mesh_parse_line [119]
+[144]    0.0    0.00    0.00       2         wasora_define_physical_entity [144]
+-----------------------------------------------
+                0.00    0.00       2/2           wasora_step [3]
+[145]    0.0    0.00    0.00       2         wasora_instruction_mesh_post [145]
+                0.00    0.00       9/9           mesh_vtk_write_scalar [118]
+                0.00    0.00       8/18          wasora_function_init [103]
+                0.00    0.00       2/3           wasora_instruction_open_file [136]
+                0.00    0.00       1/1           mesh_vtk_write_header [160]
+                0.00    0.00       1/1           mesh_gmsh_write_header [155]
+                0.00    0.00       1/1           mesh_vtk_write_mesh [161]
+                0.00    0.00       1/1           mesh_gmsh_write_mesh [156]
+                0.00    0.00       1/1           mesh_gmsh_write_scalar [157]
+-----------------------------------------------
+                                3612             clear_rec [146]
+                0.00    0.00       1/1           kd_clear [149]
+[146]    0.0    0.00    0.00       1+3612    clear_rec [146]
+                                3612             clear_rec [146]
+-----------------------------------------------
+                0.00    0.00       1/1           kd_insert [64]
+[147]    0.0    0.00    0.00       1         hyperrect_create [147]
+-----------------------------------------------
+                0.00    0.00       1/1           kd_clear [149]
+[148]    0.0    0.00    0.00       1         hyperrect_free [148]
+-----------------------------------------------
+                0.00    0.00       1/1           kd_free [151]
+[149]    0.0    0.00    0.00       1         kd_clear [149]
+                0.00    0.00       1/1           clear_rec [146]
+                0.00    0.00       1/1           hyperrect_free [148]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh [14]
+[150]    0.0    0.00    0.00       1         kd_create [150]
+-----------------------------------------------
+                0.00    0.00       1/1           mesh_free [153]
+[151]    0.0    0.00    0.00       1         kd_free [151]
+                0.00    0.00       1/1           kd_clear [149]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh [14]
+[152]    0.0    0.00    0.00       1         mesh_element2cell [152]
+                0.00    0.00    1716/3076        mesh_compute_element_barycenter [55]
+                0.00    0.00    1196/2392        mesh_hexahedron_vol [59]
+                0.00    0.00     520/1040        mesh_prism_vol [67]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_free [143]
+[153]    0.0    0.00    0.00       1         mesh_free [153]
+                0.00    0.00       1/1           kd_free [151]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh [14]
+[154]    0.0    0.00    0.00       1         mesh_gmsh_readmesh [154]
+                0.00    0.00   15328/15328       mesh_add_element_to_list [49]
+                0.00    0.00   12688/12688       mesh_add_material_to_list [50]
+                0.00    0.00       4/52571       wasora_evaluate_expression [44]
+                0.00    0.00       1/3           wasora_instruction_open_file [136]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh_post [145]
+[155]    0.0    0.00    0.00       1         mesh_gmsh_write_header [155]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh_post [145]
+[156]    0.0    0.00    0.00       1         mesh_gmsh_write_mesh [156]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh_post [145]
+[157]    0.0    0.00    0.00       1         mesh_gmsh_write_scalar [157]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_init [184]
+[158]    0.0    0.00    0.00       1         mesh_node_indexes [158]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_element_types_init [22]
+[159]    0.0    0.00    0.00       1         mesh_one_node_point_init [159]
+                0.00    0.00       2/28          mesh_alloc_gauss [93]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh_post [145]
+[160]    0.0    0.00    0.00       1         mesh_vtk_write_header [160]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_instruction_mesh_post [145]
+[161]    0.0    0.00    0.00       1         mesh_vtk_write_mesh [161]
+                0.00    0.00       1/1           mesh_vtk_write_unstructured_mesh [162]
+-----------------------------------------------
+                0.00    0.00       1/1           mesh_vtk_write_mesh [161]
+[162]    0.0    0.00    0.00       1         mesh_vtk_write_unstructured_mesh [162]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_init [184]
+[163]    0.0    0.00    0.00       1         milonga_allocate_global_matrices [163]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_init [184]
+[164]    0.0    0.00    0.00       1         milonga_allocate_global_vectors [164]
+-----------------------------------------------
+                0.00    0.00       1/1           plugin_longversion [177]
+[165]    0.0    0.00    0.00       1         milonga_debug_cpu_info [165]
+                0.00    0.00       1/2           milonga_debug_n_processors [139]
+-----------------------------------------------
+                0.00    0.00       1/1           plugin_longversion [177]
+[166]    0.0    0.00    0.00       1         milonga_debug_cpu_info_free [166]
+-----------------------------------------------
+                0.00    0.00       1/1           plugin_parse_line [130]
+[167]    0.0    0.00    0.00       1         milonga_define_result_functions [167]
+                0.00    0.00      10/18          wasora_define_function [101]
+-----------------------------------------------
+                0.00    0.00       1/1           milonga_instruction_step [4]
+[168]    0.0    0.00    0.00       1         milonga_read_boundaries [168]
+-----------------------------------------------
+                0.00    0.00       1/1           plugin_init_after_parser [174]
+[169]    0.0    0.00    0.00       1         milonga_set_entry_points [169]
+-----------------------------------------------
+                0.00    0.00       1/1           milonga_instruction_step [4]
+[170]    0.0    0.00    0.00       1         milonga_solve_eigen_slepc [170]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[171]    0.0    0.00    0.00       1         plugin_copyright [171]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[172]    0.0    0.00    0.00       1         plugin_description [172]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[173]    0.0    0.00    0.00       1         plugin_finalize [173]
+                0.00    0.00       1/2           sn_elements_problem_free [143]
+                0.00    0.00       1/2           milonga_free_global_matrices [140]
+                0.00    0.00       1/2           milonga_free_global_vectors [141]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_init_after_parser [208]
+[174]    0.0    0.00    0.00       1         plugin_init_after_parser [174]
+                0.00    0.00       8/8           milonga_resolve_xs_expr [120]
+                0.00    0.00       1/25          wasora_get_vector_ptr [95]
+                0.00    0.00       1/8           wasora_define_vector [121]
+                0.00    0.00       1/4           wasora_vector_init [135]
+                0.00    0.00       1/1           milonga_set_entry_points [169]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_init_before_parser [21]
+[175]    0.0    0.00    0.00       1         plugin_init_before_parser [175]
+                0.00    0.00      24/70          wasora_define_variable [83]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_init_before_run [209]
+[176]    0.0    0.00    0.00       1         plugin_init_before_run [176]
+                0.00    0.00       1/2           sn_elements_problem_free [143]
+                0.00    0.00       1/2           milonga_free_global_matrices [140]
+                0.00    0.00       1/2           milonga_free_global_vectors [141]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[177]    0.0    0.00    0.00       1         plugin_longversion [177]
+                0.00    0.00       1/2           milonga_debug_n_processors [139]
+                0.00    0.00       1/1           milonga_debug_cpu_info [165]
+                0.00    0.00       1/1           milonga_debug_cpu_info_free [166]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[178]    0.0    0.00    0.00       1         plugin_name [178]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[179]    0.0    0.00    0.00       1         plugin_usage [179]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[180]    0.0    0.00    0.00       1         plugin_version [180]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_load_hardcoded_plugin [212]
+[181]    0.0    0.00    0.00       1         plugin_wasorahmd5 [181]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_matrices_build [6]
+[182]    0.0    0.00    0.00       1         sn_elements_allocate_general_elemental_objects [182]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_free [143]
+[183]    0.0    0.00    0.00       1         sn_elements_free_elemental_objects [183]
+-----------------------------------------------
+                0.00    0.00       1/1           milonga_instruction_step [4]
+[184]    0.0    0.00    0.00       1         sn_elements_problem_init [184]
+                0.00    0.00      10/10          sn_elements_results_fill_args [115]
+                0.00    0.00       1/1           milonga_allocate_global_matrices [163]
+                0.00    0.00       1/1           sn_init_weights [188]
+                0.00    0.00       1/1           milonga_allocate_global_vectors [164]
+                0.00    0.00       1/1           mesh_node_indexes [158]
+-----------------------------------------------
+                0.00    0.00       1/1           milonga_instruction_step [4]
+[185]    0.0    0.00    0.00       1         sn_elements_results_fill_flux [185]
+-----------------------------------------------
+                0.00    0.00       1/1           milonga_instruction_step [4]
+[186]    0.0    0.00    0.00       1         sn_elements_results_fill_power [186]
+                0.00    0.00    1806/52571       wasora_evaluate_expression [44]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_matrices_build [6]
+[187]    0.0    0.00    0.00       1         sn_elements_set_essential_bc [187]
+                0.00    0.00    2640/2640        sn_elements_add_vacuum_bc [58]
+                0.00    0.00     680/680         sn_elements_compute_outward_normal [72]
+                0.00    0.00       1/2           milonga_assembly_objects [138]
+-----------------------------------------------
+                0.00    0.00       1/1           sn_elements_problem_init [184]
+[188]    0.0    0.00    0.00       1         sn_init_weights [188]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_standard_run [2]
+[189]    0.0    0.00    0.00       1         wasora_debug [189]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_parse_line [119]
+[190]    0.0    0.00    0.00       1         wasora_define_material [190]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_parse_line [119]
+[191]    0.0    0.00    0.00       1         wasora_define_mesh [191]
+                0.00    0.00       1/1           wasora_get_mesh_ptr [207]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parser_expression_in_string [215]
+[192]    0.0    0.00    0.00       1         wasora_evaluate_expression_in_string [192]
+                0.00    0.00       1/13          wasora_parse_expression [113]
+                0.00    0.00       1/52571       wasora_evaluate_expression [44]
+                0.00    0.00       1/32          wasora_destroy_expression [90]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[193]    0.0    0.00    0.00       1         wasora_finalize [193]
+                0.00    0.00       1/1           plugin_finalize [173]
+                0.00    0.00       1/1           wasora_free_assignments [194]
+                0.00    0.00       1/1           wasora_free_print_vectors [201]
+                0.00    0.00       1/1           wasora_free_prints [202]
+                0.00    0.00       1/1           wasora_free_dae [195]
+                0.00    0.00       1/1           wasora_free_shm [203]
+                0.00    0.00       1/1           wasora_free_solves [204]
+                0.00    0.00       1/1           wasora_free_print_functions [200]
+                0.00    0.00       1/1           wasora_free_vars [205]
+                0.00    0.00       1/1           wasora_free_files [196]
+                0.00    0.00       1/1           wasora_free_functions [197]
+                0.00    0.00       1/1           wasora_free_instructions [198]
+                0.00    0.00       1/1           wasora_free_matrices [199]
+                0.00    0.00       1/1           wasora_free_vectors [206]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[194]    0.0    0.00    0.00       1         wasora_free_assignments [194]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[195]    0.0    0.00    0.00       1         wasora_free_dae [195]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[196]    0.0    0.00    0.00       1         wasora_free_files [196]
+                0.00    0.00       4/4           wasora_instruction_close_file [134]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[197]    0.0    0.00    0.00       1         wasora_free_functions [197]
+                0.00    0.00      18/18          wasora_free_function [102]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[198]    0.0    0.00    0.00       1         wasora_free_instructions [198]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[199]    0.0    0.00    0.00       1         wasora_free_matrices [199]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[200]    0.0    0.00    0.00       1         wasora_free_print_functions [200]
+                0.00    0.00       1/32          wasora_destroy_expression [90]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[201]    0.0    0.00    0.00       1         wasora_free_print_vectors [201]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[202]    0.0    0.00    0.00       1         wasora_free_prints [202]
+                0.00    0.00      30/32          wasora_destroy_expression [90]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[203]    0.0    0.00    0.00       1         wasora_free_shm [203]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[204]    0.0    0.00    0.00       1         wasora_free_solves [204]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[205]    0.0    0.00    0.00       1         wasora_free_vars [205]
+                0.00    0.00      70/70          wasora_free_var [84]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_finalize [193]
+[206]    0.0    0.00    0.00       1         wasora_free_vectors [206]
+                0.00    0.00       8/8           wasora_free_vector [122]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_define_mesh [191]
+[207]    0.0    0.00    0.00       1         wasora_get_mesh_ptr [207]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parse_main_input_file [24]
+[208]    0.0    0.00    0.00       1         wasora_init_after_parser [208]
+                0.00    0.00       1/1           plugin_init_after_parser [174]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_standard_run [2]
+[209]    0.0    0.00    0.00       1         wasora_init_before_run [209]
+                0.00    0.00       1/1           plugin_init_before_run [176]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_step [3]
+[210]    0.0    0.00    0.00       1         wasora_instruction_print_function [210]
+                0.00    0.00       1/18          wasora_function_init [103]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_step [3]
+[211]    0.0    0.00    0.00       1         wasora_instruction_shell [211]
+                0.00    0.00       1/4           wasora_evaluate_string [133]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[212]    0.0    0.00    0.00       1         wasora_load_hardcoded_plugin [212]
+                0.00    0.00       1/1           plugin_name [178]
+                0.00    0.00       1/1           plugin_version [180]
+                0.00    0.00       1/1           plugin_longversion [177]
+                0.00    0.00       1/1           plugin_description [172]
+                0.00    0.00       1/1           plugin_usage [179]
+                0.00    0.00       1/1           plugin_wasorahmd5 [181]
+                0.00    0.00       1/1           plugin_copyright [171]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parse_main_input_file [24]
+[213]    0.0    0.00    0.00       1         wasora_parse_first_pass [213]
+                0.00    0.00      50/100         wasora_read_line [79]
+                0.00    0.00      19/166         wasora_get_next_token [75]
+                0.00    0.00       1/5           wasora_fopen [129]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parse_main_input_file [24]
+[214]    0.0    0.00    0.00       1         wasora_parse_input_file [214]
+                0.00    0.00      50/100         wasora_read_line [79]
+                0.00    0.00      19/19          wasora_parse_line [99]
+                0.00    0.00      19/19          wasora_pop_error_message [100]
+                0.00    0.00       4/4           plugin_parse_line [130]
+                0.00    0.00       1/5           wasora_fopen [129]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_parse_line [119]
+[215]    0.0    0.00    0.00       1         wasora_parser_expression_in_string [215]
+                0.00    0.00       1/166         wasora_get_next_token [75]
+                0.00    0.00       1/1           wasora_evaluate_expression_in_string [192]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_mesh_parse_line [119]
+[216]    0.0    0.00    0.00       1         wasora_parser_file_path [216]
+                0.00    0.00       1/30          wasora_parser_string [92]
+                0.00    0.00       1/6           wasora_define_file [128]
+-----------------------------------------------
+                0.00    0.00       1/1           plugin_parse_line [130]
+[217]    0.0    0.00    0.00       1         wasora_parser_keywords_ints [217]
+                0.00    0.00       1/166         wasora_get_next_token [75]
+-----------------------------------------------
+                0.00    0.00       1/1           wasora_parse_line [99]
+[218]    0.0    0.00    0.00       1         wasora_parser_string_format [218]
+                0.00    0.00       1/166         wasora_get_next_token [75]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [53] PetscMemcpy (petscsys.h) [116] mesh_three_node_line_dhdr [121] wasora_define_vector
+ [124] PetscTime (petsctime.h) [117] mesh_three_node_line_h [90] wasora_destroy_expression
+ [146] clear_rec (kdtree.c)   [36] mesh_three_node_line_init [105] wasora_ends_in_init
+ [147] hyperrect_create (kdtree.c) [56] mesh_three_node_triang_dhdr [106] wasora_ends_in_zero
+  [65] hyperrect_extend (kdtree.c) [69] mesh_three_node_triang_h [44] wasora_evaluate_expression
+ [148] hyperrect_free (kdtree.c) [37] mesh_three_node_triangle_init [192] wasora_evaluate_expression_in_string
+  [63] insert_rec (kdtree.c)  [38] mesh_twenty_node_hexaedron_init [133] wasora_evaluate_string
+ [149] kd_clear               [66] mesh_twenty_node_hexahedron_dhdr [193] wasora_finalize
+ [150] kd_create              [73] mesh_twenty_node_hexahedron_h [129] wasora_fopen
+ [151] kd_free                [39] mesh_twentyseven_node_hexaedron_init [194] wasora_free_assignments
+  [64] kd_insert              [60] mesh_twentyseven_node_hexahedron_dhdr [195] wasora_free_dae
+  [49] mesh_add_element_to_list [68] mesh_twentyseven_node_hexahedron_h [196] wasora_free_files
+  [50] mesh_add_material_to_list [125] mesh_two_node_line_dhdr [102] wasora_free_function
+  [48] mesh_alloc_fem_objects [126] mesh_two_node_line_h [197] wasora_free_functions
+  [93] mesh_alloc_gauss       [40] mesh_two_node_line_init [198] wasora_free_instructions
+  [18] mesh_compute_B        [160] mesh_vtk_write_header [199] wasora_free_matrices
+  [15] mesh_compute_H        [161] mesh_vtk_write_mesh   [200] wasora_free_print_functions
+  [13] mesh_compute_dhdx     [118] mesh_vtk_write_scalar [201] wasora_free_print_vectors
+   [9] mesh_compute_dxdr     [162] mesh_vtk_write_unstructured_mesh [202] wasora_free_prints
+  [55] mesh_compute_element_barycenter [163] milonga_allocate_global_matrices [203] wasora_free_shm
+   [7] mesh_compute_fem_objects_at_gauss [164] milonga_allocate_global_vectors [204] wasora_free_solves
+  [19] mesh_compute_h        [138] milonga_assembly_objects [84] wasora_free_var
+  [51] mesh_compute_l        [165] milonga_debug_cpu_info [205] wasora_free_vars
+  [20] mesh_compute_x        [166] milonga_debug_cpu_info_free [122] wasora_free_vector
+  [62] mesh_count_common_nodes [139] milonga_debug_n_processors [206] wasora_free_vectors
+  [61] mesh_cross            [167] milonga_define_result_functions [103] wasora_function_init
+  [47] mesh_cross_dot        [140] milonga_free_global_matrices [107] wasora_get_builtin_function_ptr
+  [43] mesh_determinant      [141] milonga_free_global_vectors [108] wasora_get_builtin_functional_ptr
+  [46] mesh_dot              [127] milonga_get_cpu_time  [109] wasora_get_builtin_vectorfunction_ptr
+  [16] mesh_eight_node_hexahedron_dhdr [4] milonga_instruction_step [104] wasora_get_function_ptr
+  [10] mesh_eight_node_hexahedron_h [168] milonga_read_boundaries [97] wasora_get_matrix_ptr
+  [28] mesh_eight_node_hexahedron_init [120] milonga_resolve_xs_expr [207] wasora_get_mesh_ptr
+  [76] mesh_eight_node_quad_dhdr [169] milonga_set_entry_points [75] wasora_get_next_token
+  [82] mesh_eight_node_quad_h [170] milonga_solve_eigen_slepc [110] wasora_get_variable_ptr
+  [29] mesh_eight_node_quadrangle_init [171] plugin_copyright [95] wasora_get_vector_ptr
+ [152] mesh_element2cell     [172] plugin_description    [208] wasora_init_after_parser
+  [70] mesh_find_element_volumetric_neighbor [173] plugin_finalize [21] wasora_init_before_parser
+  [45] mesh_four_node_quad_dhdr [174] plugin_init_after_parser [209] wasora_init_before_run
+  [54] mesh_four_node_quad_h [175] plugin_init_before_parser [134] wasora_instruction_close_file
+  [30] mesh_four_node_quadrangle_init [176] plugin_init_before_run [14] wasora_instruction_mesh
+  [85] mesh_four_node_tetrahedron_dhdr [177] plugin_longversion [145] wasora_instruction_mesh_post
+  [98] mesh_four_node_tetrahedron_h [178] plugin_name    [136] wasora_instruction_open_file
+  [31] mesh_four_node_tetrahedron_init [130] plugin_parse_line [123] wasora_instruction_print
+ [153] mesh_free             [179] plugin_usage          [210] wasora_instruction_print_function
+ [154] mesh_gmsh_readmesh    [180] plugin_version        [211] wasora_instruction_shell
+ [155] mesh_gmsh_write_header [181] plugin_wasorahmd5    [212] wasora_load_hardcoded_plugin
+ [156] mesh_gmsh_write_mesh   [58] sn_elements_add_vacuum_bc [78] wasora_mesh_add_node_parent
+ [157] mesh_gmsh_write_scalar [182] sn_elements_allocate_general_elemental_objects [87] wasora_mesh_compute_coords_from_parent
+  [26] mesh_hexa_gauss27_init [142] sn_elements_allocate_particular_elemental_objects [22] wasora_mesh_element_types_init
+  [59] mesh_hexahedron_vol     [5] sn_elements_build_elemental_objects [23] wasora_mesh_init_before_parser
+  [25] mesh_init_shape_at_gauss [72] sn_elements_compute_outward_normal [119] wasora_mesh_parse_line
+  [11] mesh_integral_over_element [183] sn_elements_free_elemental_objects [113] wasora_parse_expression
+   [8] mesh_integration_weight [6] sn_elements_matrices_build [89] wasora_parse_factor
+  [52] mesh_inverse           [12] sn_elements_normalize_flux [213] wasora_parse_first_pass
+  [74] mesh_nine_node_quad_dhdr [143] sn_elements_problem_free [214] wasora_parse_input_file
+  [81] mesh_nine_node_quad_h [184] sn_elements_problem_init [99] wasora_parse_line
+  [32] mesh_nine_node_quadrangle_init [115] sn_elements_results_fill_args [94] wasora_parse_madeup_expression
+ [158] mesh_node_indexes     [185] sn_elements_results_fill_flux [24] wasora_parse_main_input_file
+  [57] mesh_normalized_cross [186] sn_elements_results_fill_power [215] wasora_parser_expression_in_string
+ [159] mesh_one_node_point_init [187] sn_elements_set_essential_bc [216] wasora_parser_file_path
+  [67] mesh_prism_vol        [188] sn_init_weights       [217] wasora_parser_keywords_ints
+  [17] mesh_six_node_prism_dhdr [112] wasora_add_leading_zeros [91] wasora_parser_match_keyword_expression
+  [41] mesh_six_node_prism_h  [80] wasora_check_name      [92] wasora_parser_string
+  [33] mesh_six_node_prism_init [189] wasora_debug       [218] wasora_parser_string_format
+  [88] mesh_six_node_triang_dhdr [128] wasora_define_file [100] wasora_pop_error_message
+  [96] mesh_six_node_triang_h [101] wasora_define_function [79] wasora_read_line
+  [34] mesh_six_node_triangle_init [111] wasora_define_instruction [137] wasora_realloc_variable_ptr
+  [42] mesh_subtract         [190] wasora_define_material  [2] wasora_standard_run
+  [71] mesh_subtract_dot     [191] wasora_define_mesh      [3] wasora_step
+  [77] mesh_ten_node_tetrahedron_dhdr [144] wasora_define_physical_entity [114] wasora_strip_blanks
+  [86] mesh_ten_node_tetrahedron_h [131] wasora_define_physical_property [135] wasora_vector_init
+  [35] mesh_ten_node_tetrahedron_init [132] wasora_define_property_data
+  [27] mesh_tetrahedron_gauss_init [83] wasora_define_variable
