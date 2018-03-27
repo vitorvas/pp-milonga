@@ -2,12 +2,13 @@
 # call milonga tests for profiling information
 
 for i in tet hex; do
-    cd cylinder-$i-1;
-    milonga ../profiling.mil cylinder-$i > cylinder-$i.dat;
-    gprof /usr/bin/milonga > cylinder-$i-gprof.txt
-    cd ..
-    echo "Done with cylinder-$i."
-    
+    for j in elements volumes; do
+	cd cylinder-$i-$j;
+	milonga ../profiling.mil --$j cylinder-$i-$j > cylinder-$i-$j.dat;
+	gprof /usr/bin/milonga > cylinder-$i-$j-gprof.txt
+	cd ..
+	echo "Done with cylinder-$i-$j."
+    done
 done
 
 
