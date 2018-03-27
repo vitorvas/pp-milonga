@@ -1,10 +1,11 @@
 \documentclass{anstrans}
 
 %%%% packages and definitions (optional)
-\usepackage{graphicx} % allows inclusion of graphics
-\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{graphicx}  % allows inclusion of graphics
+\usepackage{booktabs}  % nice rules (thick lines) for tables
 \usepackage{microtype} % improves typography for PDF
-\usepackage{verbatim} 
+\usepackage{verbatim}
+\usepackage{listings}  % Have .geo file code or other source code
 
 \newcommand{\SN}{S$_N$}
 \renewcommand{\vec}[1]{\bm{#1}} % vector is bold italic
@@ -44,7 +45,7 @@
 $^{*}$Centro de Desenvolvimento da Tecnologia Nuclear, CEP 31270-901,
 Belo Horizonte - MG, Brazil
 \and
-$^{\dagger}$Seamples, Rafaela, Argentina
+$^{\dagger}$Seamplex, Rafaela, Argentina
 }
 
 \email{\{vitors, aacs, campolina\}@cdtn.br \and theler@seamplex.com}
@@ -271,14 +272,26 @@ that your subsection needs at least two of them.
 \appendix
 \section{Appendix}
 
-Numbering in the appendix is different:
-\begin{equation} \label{eq:appendix}
-  2 + 2 = 5\,.
-\end{equation}
-and another equation:
-\begin{equation} \label{eq:appendix2}
-  a + b = c\,.
-\end{equation}
+Some changes were made to the original example \texttt{3dshape.mil} distributed
+with milonga in order to create a similar mesh to the cylinder, but using
+hexahedrical elements. The changes made in the \texttt{cylinder.geo} file
+are listed below:
+
+\begin{lstlisting}%[caption=Gmsh cylinder.geo example]
+// Generate hexahedra
+Recombine Surface {6};
+
+Extrude {0, 0, 2*a} {
+  Surface{6}; Layers{Round(2*a)}; Recombine;
+}
+\end{lstlisting}
+
+Inside the \texttt{extrude} command, a \textit{layers} primitive is used to
+define the number of layers to be extruded. The \textit{round} command must
+be added to round the non-integer value previously defined. This is done
+in order to keep a similar proportion to the tetrahedrical mesh. The
+command \textit{Recombine} is used to recombine tetrahedra into prisms,
+hexahedra or pyramids, depending on the algorithm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}

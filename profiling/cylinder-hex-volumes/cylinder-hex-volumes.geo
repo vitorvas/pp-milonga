@@ -19,7 +19,7 @@ Circle(4) = {5, 1, 2};
 Line Loop(5) = {1, 2, 3, 4};
 Plane Surface(6) = {5};
 
-// Para gerar hexahedros
+// Generate hexahedra
 Recombine Surface {6};
 
 Extrude {0, 0, 2*a} {
