@@ -1,0 +1,10 @@
+#pragma omp for ordered(n) collapse(n)
+
+#pragma omp for ordered(n) depend(sink:...)
+
+#pragma omp for ordered(n) depende(source)
+
+Isso e pra usar doacross pattern de forma paralelizada.
+Se estudar com carinho, pode ser que seja util no milonga.
+
+
