@@ -4,9 +4,14 @@
 # external surface phyisical group should be named "external"
 # post-processing views are written as $1.vtk and $1.msh
 #
+# This program just extends the original application to test
+# the same geometry for tet/hex meshes, diffusion/s2 methods
+# end finite volumes/finite elements approaches
+#
+#
 # run as
-#  $ milonga 3dshape.mil [ cube | cylinder | shpere | bunny ]
-#                        [ --diffusion | --s2 | --s4 ]
+#  $ milonga profiling.mil [ cylinder{hex,tet}-{elements,volumes}-{dif,s2} ]
+#                        [ --diffusion | --s2 ]
 #                        [ --volumes | --elements ]
 #
 
