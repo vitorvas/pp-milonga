@@ -1,0 +1,1 @@
+find . -name *.msh -exec du -sh {} \;
