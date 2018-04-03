@@ -15,8 +15,6 @@
 #                        [ --volumes | --elements ]
 #
 
-# if the mesh does not already exists, call gmsh on the $1.geo file
-SHELL "if [ ! -e $1.msh ]; then gmsh -v 0 -3 $1.geo; fi"
 MESH FILE_PATH $1.msh DIMENSIONS 3
 
 # these are the default values, they are overwritten by the commandline arguments
@@ -39,7 +37,7 @@ MILONGA_STEP
 # write some results into to the standard output
 # PRINT_FUNCTION phi1 HEADER
 PRINT TEXT "\# ------------------------------------------------------------------------"
-PRINT TEXT "\# " %s $i"
+PRINT TEXT "\# " %s $1"
 PRINT TEXT "\# ------------------------------------------------------------------------"
 PRINT TEXT "\# keff     = " %.8f keff SEP " " TEXT "(" %+.1f 1e5*(1-1/keff) TEXT "pcm )"
 PRINT TEXT "\# nodes    = " %.0f nodes
