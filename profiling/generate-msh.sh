@@ -3,7 +3,7 @@
 
 for i in tet hex; do
     for j in elements volumes; do
-	for k in s2 dif; do
+	for k in s2 diffusion; do
 	    cd cylinder-$i-$j-$k;
 	    start=`date +%s`
 	    gmsh -3 cylinder-$i-$j-$k.geo -o cylinder-$i-$j-$k.msh > /dev/null
@@ -12,7 +12,7 @@ for i in tet hex; do
 	    # based on extrusions.
 	    gmsh -refine cylinder-$i-$j-$k.msh -o cylinder-$i-$j-$k.msh > /dev/null
 	    gmsh -refine cylinder-$i-$j-$k.msh -o cylinder-$i-$j-$k.msh > /dev/null
-	    gmsh -refine cylinder-$i-$j-$k.msh -o cylinder-$i-$j-$k.msh > /dev/null
+#	    gmsh -refine cylinder-$i-$j-$k.msh -o cylinder-$i-$j-$k.msh > /dev/null
 	    end=`date +%s`
 	    runtime=$((end-start))
 	    cd ..
