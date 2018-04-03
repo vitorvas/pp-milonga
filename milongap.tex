@@ -159,6 +159,19 @@ The mesh sizes are presented in table ~\ref{tab:meshes}.
 \end{tabular}
 \end{table}
 
+\subsection{External libraries}
+
+Milonga's development follows free and open source best practices in the sense of void re-inventing the wheel:
+if there is a free and open software which offers functionalities need by milonga it must be considered to use.
+Clearly, milonga makes use of some established open source software. One of them is the GNU Scientific Library, also
+known as GSL \cite{gsl2016}, which provides routines for numerical computing with a standard API for C
+programmers. Milonga heavily relies on mathematical, vector and matrices functions and data structures provided
+by GSL.
+
+But why speaking about external libraries since they are extensively used, tested and verified? Because
+the parallelization of milonga using threads must take in account if external functions are
+thread-safe\footnote{A thread-safe function is one function capable of correctly work during simultaneous
+execution.}. In the case of GSL...
 
 \subsection{Matrices aimed to parallel solution [This has no effect in improving milonga performance]}
 A simple approach to make milonga take advantage of parallel architectures is to parallelize the
