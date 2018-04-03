@@ -143,7 +143,7 @@ In order to assess how the performace of milonga degrades with the increase of t
 test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{milonga}
 and consists of the same problem solved in three different discretizations, respectively increased. In other words,
 the reference mesh was refined one time and the refined mesh was again refined. This process was carried by simply
-using the \texttt{-refine} parameter of gmsh.
+using the \texttt{-refine} parameter of gmsh. \textbf{(ERRO na leitura. Mudar o .geo e o texto de acordo).}
 
 The mesh sizes are presented in table ~\ref{tab:meshes}.
 
@@ -171,7 +171,10 @@ by GSL.
 But why speaking about external libraries since they are extensively used, tested and verified? Because
 the parallelization of milonga using threads must take in account if external functions are
 thread-safe\footnote{A thread-safe function is one function capable of correctly work during simultaneous
-execution.}. In the case of GSL...
+  execution.}. In the case of GSL as noted at the section 2.12 of its manual: "The library can be used in multi-threaded programs. All the functions are thread-safe, in the sense that they do not use static variables". Despite the affirmative the
+simple fact of being considered thread-safe is not a garantee of error free use. Special care must be taken to safely
+distributed work in threads and details on how this is achieved in milonga parallel implementation will be provided
+in the next sections.
 
 \subsection{Matrices aimed to parallel solution [This has no effect in improving milonga performance]}
 A simple approach to make milonga take advantage of parallel architectures is to parallelize the
