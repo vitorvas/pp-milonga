@@ -37,7 +37,10 @@ PHYSICAL_ENTITY NAME external BC vacuum
 MILONGA_STEP
 
 # write some results into to the standard output
-PRINT_FUNCTION phi1 HEADER
+# PRINT_FUNCTION phi1 HEADER
+PRINT TEXT "\# ------------------------------------------------------------------------"
+PRINT TEXT "\# " %s $i"
+PRINT TEXT "\# ------------------------------------------------------------------------"
 PRINT TEXT "\# keff     = " %.8f keff SEP " " TEXT "(" %+.1f 1e5*(1-1/keff) TEXT "pcm )"
 PRINT TEXT "\# nodes    = " %.0f nodes
 PRINT TEXT "\# elements = " %.0f elements
@@ -46,9 +49,10 @@ PRINT TEXT "\#   init   = " %.3f time_cpu_ini   TEXT "seconds"
 PRINT TEXT "\#   build  = " %.3f time_cpu_build TEXT "seconds"
 PRINT TEXT "\#   solve  = " %.3f time_cpu_solve TEXT "seconds"
 PRINT TEXT "\#   total  = " %.3f time_cpu_total TEXT "seconds"
+PRINT TEXT "\# ------------------------------------------------------------------------"
 
 # MILONGA_DEBUG MATRICES_X FILE_PATH 3dshape MATRICES_PETSC_OCTAVE
 
 # files for gmsh and vtk post-processing
-MESH_POST FILE_PATH $1_out.msh phi1
+# MESH_POST FILE_PATH $1_out.msh phi1
 FLUX_POST FILE_PATH $1.vtk

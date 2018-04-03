@@ -3,12 +3,15 @@
 
 for i in tet hex; do
     for j in elements volumes; do
-	for k in s2 difusion; do
+	for k in s2 diffusion; do
+	    start=`date +%s`
 	    cd cylinder-$i-$j-$k;
-	    milonga ../profiling.mil --$j --$k cylinder-$i-$j-$k > cylinder-$i-$j-$k.dat;
+	    milonga ../profiling.mil --$j --$k cylinder-$i-$j-$k;
 	    gprof /usr/bin/milonga > cylinder-$i-$j-$k-gprof.txt;
 	    cd ..
-	    echo "Done with cylinder-$i-$j-$k."
+	    end=`date +%s`
+	    runtime=$((end-start))
+	    echo "Done with cylinder-$i-$j-$k in ${runtime} seconds."
 	done
     done
 done
