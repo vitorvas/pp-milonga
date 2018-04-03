@@ -1,0 +1,83 @@
+[cfx@caprara-lx profiling]$ ./test-profiling.sh
+# ------------------------------------------------------------------------
+#       cylinder-tet-elements-s2"
+# ------------------------------------------------------------------------
+# keff     =  0.97205340 ( -2875.0 pcm )
+# nodes    =    44387
+# elements =    255424
+# CPU usage:
+#   init   =    0.034   seconds
+#   build  =    78.862  seconds
+#   solve  =    119.590 seconds
+#   total  =    198.486 seconds
+# ------------------------------------------------------------------------
+Done with cylinder-tet-elements-s2 in 205 seconds.
+# ------------------------------------------------------------------------
+#       cylinder-tet-elements-diffusion"
+# ------------------------------------------------------------------------
+# keff     =  0.90882556 ( -10032.1 pcm )
+# nodes    =    44387
+# elements =    255424
+# CPU usage:
+#   init   =    0.010   seconds
+#   build  =    7.603   seconds
+#   solve  =    10.648  seconds
+#   total  =    18.261  seconds
+# ------------------------------------------------------------------------
+Done with cylinder-tet-elements-diffusion in 23 seconds.
+# ------------------------------------------------------------------------
+#       cylinder-tet-volumes-s2"
+# ------------------------------------------------------------------------
+# keff     =  0.95900901 ( -4274.3 pcm )
+# nodes    =    44387
+# elements =    255424
+# CPU usage:
+#   init   =    5.453   seconds
+#   build  =    21.326  seconds
+#   solve  =    274.510 seconds
+#   total  =    301.289 seconds
+# ------------------------------------------------------------------------
+Done with cylinder-tet-volumes-s2 in 310 seconds.
+# ------------------------------------------------------------------------
+#       cylinder-tet-volumes-diffusion"
+# ------------------------------------------------------------------------
+# keff     =  0.92863678 ( -7684.7 pcm )
+# nodes    =    44387
+# elements =    255424
+# CPU usage:
+#   init   =    5.186   seconds
+#   build  =    0.992   seconds
+#   solve  =    38.315  seconds
+#   total  =    44.493  seconds
+# ------------------------------------------------------------------------
+Done with cylinder-tet-volumes-diffusion in 50 seconds.
+# ------------------------------------------------------------------------
+#       cylinder-hex-elements-s2"
+# ------------------------------------------------------------------------
+# keff     =  0.97177748 ( -2904.2 pcm )
+# nodes    =    98421
+# elements =    120704
+# CPU usage:
+#   init   =    0.058   seconds
+#   build  =    191.644 seconds
+#   solve  =    834.230 seconds
+#   total  =    1025.932        seconds
+# ------------------------------------------------------------------------
+Done with cylinder-hex-elements-s2 in 1035 seconds.
+# ------------------------------------------------------------------------
+#       cylinder-hex-elements-diffusion"
+# ------------------------------------------------------------------------
+# keff     =  0.90883840 ( -10030.6 pcm )
+# nodes    =    98421
+# elements =    120704
+# CPU usage:
+#   init   =    0.017   seconds
+#   build  =    13.372  seconds
+#   solve  =    26.986  seconds
+#   total  =    40.375  seconds
+# ------------------------------------------------------------------------
+Done with cylinder-hex-elements-diffusion in 48 seconds.
+error: mesh inconsistency, element 87425 has less neighbors (3) than faces (5)
+Done with cylinder-hex-volumes-s2 in 10 seconds.
+error: mesh inconsistency, element 87425 has less neighbors (3) than faces (5)
+Done with cylinder-hex-volumes-diffusion in 9 seconds.
