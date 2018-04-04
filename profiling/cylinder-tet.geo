@@ -4,7 +4,8 @@ rc = 7.428998;
 // cylinder radius to maintain the same volume as the critical sphere
 a = (2/3)^(1/3) * rc;
 
-lc = a/5;        // element characteristic length
+// the 31 is to keep about the same number of elements of the hexahedra mesh
+lc = a/31;        // element characteristic length
 
 Point(1) = {0,  0, 0, lc};
 Point(2) = {a,  0, 0, lc};
@@ -19,20 +20,11 @@ Circle(4) = {5, 1, 2};
 Line Loop(5) = {1, 2, 3, 4};
 Plane Surface(6) = {5};
 
-// Generate hexahedra
-Recombine Surface {6};
-
 Extrude {0, 0, 2*a} {
-  Surface{6}; Layers{Round(2*a)}; Recombine;
+  Surface{6};
 }
 
-// Mesh.Algorithm
-//
-//    2D mesh algorithm (1=MeshAdapt, 2=Automatic, 5=Delaunay, 6=Frontal, 7=BAMG, 8=DelQuad)
-//    Default value: 2
-//    Saved in: General.OptionsFileName
-
-Mesh.Algorithm = 5; 
+Mesh.Algorithm = 5;
 Mesh.RecombineAll = 0;
 
 Physical Volume("fuel") = {1};

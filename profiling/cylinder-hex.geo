@@ -4,7 +4,7 @@ rc = 7.428998;
 // cylinder radius to maintain the same volume as the critical sphere
 a = (2/3)^(1/3) * rc;
 
-lc = a/5;        // element characteristic length
+lc = a/50;        // element characteristic length
 
 Point(1) = {0,  0, 0, lc};
 Point(2) = {a,  0, 0, lc};
@@ -23,7 +23,7 @@ Plane Surface(6) = {5};
 Recombine Surface {6};
 
 Extrude {0, 0, 2*a} {
-  Surface{6}; Layers{Round(2*a)}; Recombine;
+  Surface{6}; Layers{Round(420*lc)}; Recombine;
 }
 
 // Mesh.Algorithm
