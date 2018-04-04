@@ -4,7 +4,8 @@ rc = 7.428998;
 // cylinder radius to maintain the same volume as the critical sphere
 a = (2/3)^(1/3) * rc;
 
-lc = a/5;        // element characteristic length
+// the 31 is to keep about the same number of elements of the hexahedra mesh
+lc = a/31;        // element characteristic length
 
 Point(1) = {0,  0, 0, lc};
 Point(2) = {a,  0, 0, lc};
