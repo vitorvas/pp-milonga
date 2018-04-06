@@ -102,31 +102,39 @@ execution
 and fixed cross-sections in order to check
 the existence of any bottlenecks of its execution.
 
-\subsection{Test-case}
+\subsection{Test-Cases}
 
-The test case is made of two different meshes. These meshes are generated using the original cylinder geometry file
-provided by milonga as part of its examples/check cases. The first mesh is a tetrahedrical one and has $N$
-elements. The second mesh is generated using mainly hexahedra\footnote{Changes made into the original
-  geometry file are shown in \ref{Appendix}} and, despite having a different number of elements than
-the tetrahedrical mesh, keeps the number of elements at the same order of magnitude.
+The profiling of milonga was performed in a set of different cases. The chosen geometry is one which is part of
+milonga distribution files. It consists of a critical cylinder, with only one material and meshed with
+tetrahedrical elements. The same mesh is then used for four different simulations: two of based on
+finite elements and two based on finite volumes discretization schemes. Each discretization scheme is used
+to solve the neutron transport equation using the diffusion approximation and the discrete ordinates $S_N$ method,
+making a total of four test-cases.
 
+The mesh used has 680,000 tetrahedrical elements.
 
-For the selected mesh and finite volumes problem, two functions were clearly identified as bottlenecks:
-\begin{verbatim}
-kd_nearest_i
-hyperrect_dist_sq
-\end{verbatim}
+%The test case is made of two different meshes. These meshes are generated using the original cylinder geometry file
+%provided by milonga as part of its examples/check cases. The first mesh is a tetrahedrical one and has $N$
+%elements. The second mesh is generated using mainly hexahedra\footnote{Changes made into the original
+%  geometry file are shown in \ref{Appendix}} and, despite having a different number of elements than
+%the tetrahedrical mesh, keeps the number of elements at the same order of magnitude.
 
-These functions belong to the third party code used to manipulate meshes. This chunk of code implements
-a \textit{k-d tree} structure and its associated algorithms. This data structure, proposed by \cite{Bentley1975}
-is aimed to partitioning a space and find neighobours of an element. Despite being the most used data
-structure for the proposed objective, it performes poorly for the needs of \textit{milonga}.
+%For the selected mesh and finite volumes problem, two functions were clearly identified as bottlenecks:
+%\begin{verbatim}
+%kd_nearest_i
+%hyperrect_dist_sq
+%\end{verbatim}
 
-The reason for this degraded performance is the ammount of data access necessary for finite volumes
-and finite elements discretization schemes. One solution for this bottleneck is to change the data structure
-in order to avoid the prohibitive number of neighbours searches. This can be accomplished storing neighbour
-information at each node or element. Of course, the drawback of this solution is the increase in the memory
-comsumption to store the data.
+%These functions belong to the third party code used to manipulate meshes. This chunk of code implements
+%a \textit{k-d tree} structure and its associated algorithms. This data structure, proposed by \cite{Bentley1975}
+%is aimed to partitioning a space and find neighobours of an element. Despite being the most used data
+%structure for the proposed objective, it performes poorly for the needs of \textit{milonga}.
+
+%The reason for this degraded performance is the ammount of data access necessary for finite volumes
+%and finite elements discretization schemes. One solution for this bottleneck is to change the data structure
+%in order to avoid the prohibitive number of neighbours searches. This can be accomplished storing neighbour
+%information at each node or element. Of course, the drawback of this solution is the increase in the memory
+%comsumption to store the data.
 
 %\subsection{Examples: 3dshape cube}
 %
@@ -138,6 +146,10 @@ comsumption to store the data.
 
 
 \subsection{Scalability}
+
+One idea is to have a parametric simulation that would increase the number of mesh elements while checking the
+memory consumption for each one. This could give a hint on how the memory increases relatively to the meshes sizes
+serving as a potential source for optimization.
 
 In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
 test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{milonga}
