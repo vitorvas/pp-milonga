@@ -230,6 +230,18 @@ simply making parameters twinkling thus changinhg the memory ocuppancy/inter pro
 %\end{equation}
 %\end{subequations}
 
+\section{OpenMP}
+
+The approach chosen for a first approach on \textit{milonga} parallelization
+is to use threads on loops. This is one of the simplest forms of parallelization,
+consisting in run segments of loops in different threads, taking care of memory
+access and avoiding race conditions. The tool used for this task is OpenMP
+\cite{Dagum1998}.
+
+OpenMP is...
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Analysis}
 
