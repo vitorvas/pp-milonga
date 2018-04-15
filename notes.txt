@@ -7,4 +7,23 @@
 Isso e pra usar doacross pattern de forma paralelizada.
 Se estudar com carinho, pode ser que seja util no milonga.
 
+-----------------------------------------------------------------
 
+/home/vitor/software/milonga/wasora/src/mesh/neighbors.c:int mesh_count_common_nodes(element_t *e1, element_t *e2, int *nodes)
+
+Essa eh uma funcao candidata. Ainda eh necessario saber
+seu perfil com detalhes, mas no seu corpo
+trata-se de um loop que compara nos em comum entre
+elementos da malha.
+
+Os nos em comum sao armazenados no vetor nodes.
+Um reduce resolve facil isso.
+Testar.
+
+-----------------------------------------------------------------
+
+3.2.3 Iteration (Book).
+
+O conceito de loop-carried-dependencies eh um conceito importante na
+paralelizacao de loos de iteracao. A funcao escolhida nao apresenta esse
+tipo de dependencia. Ao explicar isso no paper, fazer essa referencia.
