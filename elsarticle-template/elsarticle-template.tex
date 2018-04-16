@@ -41,31 +41,37 @@
 
 \begin{frontmatter}
 
-\title{Elsevier \LaTeX\ template\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+  \title{An analysis of \textit{milonga} nuclear code aimed to multi-thread parallelization}
+  
+%\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
 
 %% Group authors per affiliation:
-\author{Vitor Vasconcelos, Andr\'e A. C. dos Santos, Daniel Campolina\fnref{myfootnote}}
-\address{Centro de Desenvolvimento da Tecnologia Nuclear, CEP 31270-901,
-Belo Horizonte - MG, Brazil}
-%\fntext[myfootnote]{Since 1880.}
-
-%% Group authors per affiliation:
-\author{Germ\'an Theler\fnref{myfootnote}}
-\address{Seamplex, Rafaela, Argentina}
-\fntext[myfootnote]{Since 1880.}
-
-%% or include affiliations in footnotes:
-\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
-\ead[url]{www.elsevier.com}
-
-\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+\author[mycorrespondingauthor]{Vitor Vasconcelos}%\corref{mycorrespondingauthor}}
 \cortext[mycorrespondingauthor]{Vitor Vasconcelos}
 \ead{vitors@cdtn.br}
 
-\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
-\address[mysecondaryaddress]{360 Park Avenue South, New York}
+\author{Andr\'e A. C. dos Santos}
+\author{Daniel Campolina}                                
+\address{Centro de Desenvolvimento da Tecnologia Nuclear (CDTN) - CEP 31270-901,
+Belo Horizonte - MG, Brazil}
 
+%\fntext[myfootnote]{Since 1880.}
+
+%% Group authors per affiliation:
+\author{Germ\'an Theler}%\fnref{myfootnote}}
+\address{Seamplex, Rafaela, Argentina}
+%\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+%\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+%\ead[url]{www.elsevier.com}
+
+%\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+
+%\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+%\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+% ----------------------------------------------------------------------------------------
 \begin{abstract}
 This template helps you to create a properly formatted \LaTeX\ manuscript.
 \end{abstract}
@@ -77,41 +83,300 @@ This template helps you to create a properly formatted \LaTeX\ manuscript.
 
 \end{frontmatter}
 
-\linenumbers
+%\linenumbers % Coloca números em linhas do artigo para facilitar a correção.
 
-\section{The Elsevier article class}
+% ----------------------------------------------------------------------------------------
 
-\paragraph{Installation} If the document class \emph{elsarticle} is not available on your computer, you can download and install the system package \emph{texlive-publishers} (Linux) or install the \LaTeX\ package \emph{elsarticle} using the package manager of your \TeX\ installation, which is typically \TeX\ Live or Mik\TeX.
+\section{Introduction}
 
-\paragraph{Usage} Once the package is properly installed, you can use the document class \emph{elsarticle} to create a manuscript. Please make sure that your manuscript follows the guidelines in the Guide for Authors of the relevant journal. It is not necessary to typeset your manuscript in exactly the same way as an article, unless you are submitting to a camera-ready copy (CRC) journal.
+%\paragraph{...} Marca a primeira palavra no texto. Não sei o melhor uso.
 
-\paragraph{Functionality} The Elsevier article class is based on the standard article class and supports almost all of the functionality of that class. In addition, it features commands and options to format the
+Before any atempt to describe \textit{milonga} nuclear code in parallel, it is
+necessary to describe its context and how it works. In order to do that, is mandatory
+to give a brief introduction of \textit{wasora}.
+
+Wasora is... \cite{wasora}.
+
+There are two first approaches to parallelize milonga:
 \begin{itemize}
-\item document style
-\item baselineskip
-\item front matter
-\item keywords and MSC codes
-\item theorems, definitions and proofs
-\item lables of enumerations
-\item citation style and labeling.
+\item Parallelize only the solution of the matrices obtained by the discretization
+  provided by either finite volumes of finite elements discretization schemes using
+  SLEPc and PETSc libraries;
+\item Parallelize using domain decomposition techniques.
 \end{itemize}
 
-\section{Front matter}
+milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
+its impossible to propose any paralelization scheme for milonga before devoting some
+time to understand the way both of these libraries work.
 
-The author names and affiliations could be formatted in two ways:
-\begin{enumerate}[(1)]
-\item Group the authors per affiliation.
-\item Use footnotes to indicate the affiliations.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Theory}
+
+\section{Profiling}
+Before any attempt to parallelize any piece of software, a basic task must be performed:
+software execution profiling. Profiling consists in a dynamic program analysis
+that measures memory use, time complexity, number of function calls and many other characteristics of
+a program.
+
+The standard profiling tool for Linux systems is gprof [cite]. Gprof was used in a standard milonga
+execution
+%with a mesh of about 300 thousand elements
+and fixed cross-sections in order to check
+the existence of any bottlenecks of its execution.
+
+\subsection{Test-Cases}
+
+The profiling of milonga was performed in a set of different cases. The chosen geometry is one which is part of
+milonga distribution files. It consists of a critical cylinder, with only one material and meshed with
+tetrahedrical elements. The same mesh is then used for four different simulations: two of based on
+finite elements and two based on finite volumes discretization schemes. Each discretization scheme is used
+to solve the neutron transport equation using the diffusion approximation and the discrete ordinates $S_N$ method,
+making a total of four test-cases.
+
+The mesh used has 680,000 tetrahedrical elements.
+
+%The test case is made of two different meshes. These meshes are generated using the original cylinder geometry file
+%provided by milonga as part of its examples/check cases. The first mesh is a tetrahedrical one and has $N$
+%elements. The second mesh is generated using mainly hexahedra\footnote{Changes made into the original
+%  geometry file are shown in \ref{Appendix}} and, despite having a different number of elements than
+%the tetrahedrical mesh, keeps the number of elements at the same order of magnitude.
+
+%For the selected mesh and finite volumes problem, two functions were clearly identified as bottlenecks:
+%\begin{verbatim}
+%kd_nearest_i
+%hyperrect_dist_sq
+%\end{verbatim}
+
+%These functions belong to the third party code used to manipulate meshes. This chunk of code implements
+%a \textit{k-d tree} structure and its associated algorithms. This data structure, proposed by \cite{Bentley1975}
+%is aimed to partitioning a space and find neighobours of an element. Despite being the most used data
+%structure for the proposed objective, it performes poorly for the needs of \textit{milonga}.
+
+%The reason for this degraded performance is the ammount of data access necessary for finite volumes
+%and finite elements discretization schemes. One solution for this bottleneck is to change the data structure
+%in order to avoid the prohibitive number of neighbours searches. This can be accomplished storing neighbour
+%information at each node or element. Of course, the drawback of this solution is the increase in the memory
+%comsumption to store the data.
+
+%\subsection{Examples: 3dshape cube}
+%
+%Some preliminary tests regarding a tethraedrical cube lead to the \texttt{mesh/tet4.c} file.
+%Specifically, in function \texttt{mesh\_four\_node\_tetrahedron\_dhdr}, there is a long case
+%statement which was replaced by a two if clauses function body, simply returning $-1$, $1$ or $0$
+%depending on function arguments. These tests lead to an astonishing slow run of milonga (alcor-lx).
+
+
+
+\subsection{Scalability}
+
+One idea is to have a parametric simulation that would increase the number of mesh elements while checking the
+memory consumption for each one. This could give a hint on how the memory increases relatively to the meshes sizes
+serving as a potential source for optimization.
+
+In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
+test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{wasora}
+and consists of the same problem solved in three different discretizations, respectively increased. In other words,
+the reference mesh was refined one time and the refined mesh was again refined. This process was carried by simply
+using the \texttt{-refine} parameter of gmsh. \textbf{(ERRO na leitura. Mudar o .geo e o texto de acordo).}
+
+The mesh sizes are presented in table ~\ref{tab:meshes}.
+
+\begin{table}[]
+\centering
+\caption{Comparative results for three meshes,}
+\label{tab:meshes}
+\begin{tabular}{crcr}
+                            & \multicolumn{1}{c}{elements} & matrix size       & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}time\\ elapsed {[}s{]}\end{tabular}} \\ \hline
+\multicolumn{1}{c|}{Mesh 0} & 12,884                       & 25,768 x 25,768   & 11.47                                                                              \\ \hline
+\multicolumn{1}{c|}{Mesh 1} & 51,536                       & 103,072 x 103,072 & 87.68                                                                              \\ \hline
+\multicolumn{1}{c|}{Mesh 2} & 206,154                      & 412,288 x 412,288 & 773.33                                                                             \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{External libraries}
+
+Milonga's development follows free and open source best practices in the sense of void re-inventing the wheel:
+if there is a free and open software which offers functionalities need by milonga it must be considered to use.
+Clearly, milonga makes use of some established open source software. One of them is the GNU Scientific Library, also
+known as GSL \cite{gsl2016}, which provides routines for numerical computing with a standard API for C
+programmers. Milonga heavily relies on mathematical, vector and matrices functions and data structures provided
+by GSL.
+
+But why speaking about external libraries since they are extensively used, tested and verified? Because
+the parallelization of milonga using threads must take in account if external functions are
+thread-safe\footnote{A thread-safe function is one function capable of correctly work during simultaneous
+  execution.}. In the case of GSL as noted at the section 2.12 of its manual: "The library can be used in multi-threaded programs. All the functions are thread-safe, in the sense that they do not use static variables". Despite the affirmative the
+simple fact of being considered thread-safe is not a garantee of error free use. Special care must be taken to safely
+distributed work in threads and details on how this is achieved in milonga parallel implementation will be provided
+in the next sections.
+
+\subsection{Matrices aimed to parallel solution [This has no effect in improving milonga performance]}
+A simple approach to make milonga take advantage of parallel architectures is to parallelize the
+solution of the linear system generated by the finite volumes of finite elements methods.
+
+The computations are carried in two steps:
+\begin{enumerate}
+\item Matrix building;
+  \item Matrix solution.
 \end{enumerate}
-See the front matter of this document for examples. You are recommended to conform your choice to the journal you are submitting to.
 
-\section{Bibliography styles}
+milonga uses the PETSc library to perform both tasks. In order to be able to solve the linear problem
+in parallel, a special care must be taken in the proccess of building the matrices.
 
-There are various bibliography styles available. You can select the style of your choice in the preamble of this document. These styles are Elsevier styles based on standard styles like Harvard and Vancouver. Please use Bib\TeX\ to generate your bibliography and include DOIs whenever available.
 
-Here are two sample references: \cite{Feynman1963118,Dirac1953888}.
+\subsection{Parallel Programming Patterns}
+(James Reinders - Structure Parallel Programming presentation)
+Parallel programming patterns where used to get communication between proccess after
+domain decomposition but also to estimate the best decompositions considering the system
+architecture. The partitions algorithm is parametrized, which allows fine tuning of performance
+simply making parameters twinkling thus changinhg the memory ocuppancy/inter proccess communication ratio.
+
+
+
+%Equations look exceedingly pretty. Here is a 3-D, monoenergetic, steady-state
+%transport equation with isotropic scattering and an isotropic extraneous source:
+%\begin{subequations} \label{eqs:fullTransport}
+%\begin{multline} \label{eq:fullTransportVol}
+%  \vec{\Omega}\vd \grad \psi(\vec{x}, \vec{\Omega})
+%  + \sigma(\vec{x}) \psi (\vec{x}, \vec{\Omega})
+%\\ =
+%  \frac{\sigma_s(\vec{x})}{4\pi} \int_{4\pi} \psi(\vec{x},\vec{\Omega}')
+%  \ud\Omega' + \frac{q(\vec{x})}{4\pi}
+%  \equiv \frac{1}{4\pi} Q(\vec{x}) \,,
+%\end{multline}
+%inside $\vec{x} \in V$, $\vec{\Omega} \in 4\pi$, with an incident boundary
+%condition
+%\begin{equation} \label{eq:fullTransportBndy}
+%  \psi(\vec{x}, \vec{\Omega}) = \psi^b(\vec{x}, \vec{\Omega}) \,,
+% \quad \vec{x} \in \partial V, \ \vec{\Omega} \vd \vec{n} < 0\,.
+%\end{equation}
+%\end{subequations}
+
+\section{OpenMP}
+
+The approach chosen for a first approach on \textit{milonga} parallelization
+is to use threads on loops. This is one of the simplest forms of parallelization,
+consisting in run segments of loops in different threads, taking care of memory
+access and avoiding race conditions. The tool used for this task is OpenMP
+\cite{Dagum1998}.
+
+OpenMP is...
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results and Analysis}
+
+Milonga runtime, profiling and memory demand before changes.
+Milonga runtime, profiling and memory demand after changes
+
+Assesment of changes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Subsection Goes Here}
+The user must manually capitalize initial letters of a subsection heading.
+
+For those who like equations in their papers, \LaTeX\ is a good choice. Here is
+an equation for the Marshak diffusion boundary condition:
+
+\begin{equation} \label{eq:marshak}
+  4 J^- = \phi + 2 D \vec{n} \vd \grad \phi \,.
+\end{equation}
+If we so choose, we can effortlessly reference the equation later.
+
+Figure~\ref{fig:voltage} shows how a plot might conceivably look in your
+document. Always place figures after they are referenced so as not to throw
+off the reader. You can use symbols and different line styles to help
+differentiate your results, especially if they are printed in black and white.
+Note how Fig.~\ref{fig:voltage} uses dashed lines \verb|--| for the exact
+solution, solid lines \verb|-| for the new method's solutions, and dotted lines
+\verb|:| for existing inaccurate methods.
+\begin{figure}[ht] % replace 't' with 'b' to force it to be on the bottom
+  \centering
+  \includegraphics{example_figure}
+  \caption{Captions are flush with the left.}
+  \label{fig:voltage}
+\end{figure}
+
+Later on, we can include a table, even one that spans two columns such as
+Table~\ref{tab:widetable}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[htb]
+  \centering
+\begin{tabular}{llllllllll}\toprule
+      & $\phi_T(0)$      & $\phi_T(10)$      & $\phi_T(20)$      &
+      $\phi_D(0)$      & $\phi_D(10)$      & $\phi_D(20)$      & $\rho$      &
+      $\varepsilon$      & $N_\text{it}$
+\\ \midrule
+$c=0.999$  & 0.9038 & 20.63 & 31.24 & 0.9087 & 20.63 & 31.23 & 0.2192 & $10^{-7}$ & 15
+\\
+$c=0.990$  & 0.3675 & 13.04 & 24.7 & 0.3696 & 13.04 & 24.69 & 0.2184 & $10^{-7}$ & 15
+\\
+$c=0.900$  & 0.009909 & 4.776 & 17.64 & 0.009984 & 4.786 & 17.63 & 0.2118 & $10^{-7}$ & 14
+\\
+$c=0.500$  & $6.069\times 10^{-5}$ & 2.212 & 15.53 & 6.213$\times 10^{-5}$ & 2.239 & 15.53 & 0.2068 & $10^{-7}$ & 13
+\\
+\bottomrule
+\end{tabular}
+  \caption{This is an example of a really wide table which might not normally
+  fit in the document.}
+  \label{tab:widetable}
+\end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Notice how the table reference uses a Roman numeral
+for its numbering scheme, whereas the figure reference uses an Arabic numeral.
+For one-column tables, use the \verb|table| environment; two-column tables use
+\verb|table*|. The same applies to figures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Another Subsection}
+Excessive sectioning in a three-page document is discouraged, but here are more
+subsections to demonstrate compliance with the ANS formatting guidelines.
+
+\subsubsection{Third-level Heading}
+This subsubsection shows compliance with the ANS-specified standard. This level
+of heading should be used rarely.
+
+\subsubsection{Another Such Heading}
+And, if you really think you need a third-level heading, you should make sure
+that your subsection needs at least two of them.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\section{Appendix}
+\label{Appendix}
+Some changes were made to the original example \texttt{3dshape.mil} distributed
+with milonga in order to create a similar mesh to the cylinder, but using
+hexahedrical elements. The changes made in the \texttt{cylinder.geo} file
+are listed below:
+
+\begin{lstlisting}%[caption=Gmsh cylinder.geo example]
+// Generate hexahedra
+Recombine Surface {6};
+
+Extrude {0, 0, 2*a} {
+  Surface{6}; Layers{Round(2*a)}; Recombine;
+}
+\end{lstlisting}
+
+Inside the \texttt{extrude} command, a \textit{layers} primitive is used to
+define the number of layers to be extruded. The \textit{round} command must
+be added to round the non-integer value previously defined. This is done
+in order to keep a similar proportion to the tetrahedrical mesh. The
+command \textit{Recombine} is used to recombine tetrahedra into prisms,
+hexahedra or pyramids, depending on the algorithm.
 
 \section*{References}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+This material is based upon work supported a Department of Energy Nuclear
+Energy University Programs Graduate Fellowship.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliography{milongap}
 
