@@ -27,3 +27,14 @@ Testar.
 O conceito de loop-carried-dependencies eh um conceito importante na
 paralelizacao de loos de iteracao. A funcao escolhida nao apresenta esse
 tipo de dependencia. Ao explicar isso no paper, fazer essa referencia.
+
+-----------------------------------------------------------------
+
+Iniciar o processo de profiling considerando consumo de memória e tempo.
+Para isso, cada execução de profiling vai ser precedida da execução 
+com -O3 (ou -O2) do milonga. Com isso vou poder medir direito o desempenho.
+
+Ver como automatizar isso e conferir, ao mesmo tempo, consumo de memória 
+e tempo. E fazer inicialmente apenas para FEM enquanto o FVM não estiver 
+100% com o exemplo utilizado. Pretendo usar só um inicialmente.
+
