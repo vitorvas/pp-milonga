@@ -87,6 +87,13 @@ milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005}
 its impossible to propose any paralelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
+milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
+GSL parallel capable \cite{Aliaga2004}, it has never reached a level of practical use. Considering
+this fact, a possible approach to make milonga parallel is to replace GSL functions used by
+discretization implementations in milonga by equivalent PETSc functions. Once milonga is ready to
+use PETSc data structures, the parallelization becomes more straighforward.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
 
