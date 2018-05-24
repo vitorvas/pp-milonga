@@ -2,7 +2,7 @@
 # the geometry should be given in $1.geo
 # bulk material phyisical group should be named "fuel" and
 # external surface phyisical group should be named "external"
-# post-processing views are written as $1.vtk and $1.msh
+# post-processing views are written as $1.vtk
 #
 # This program just extends the original application to test
 # the same geometry for tet/hex meshes, diffusion/s2 methods
@@ -18,7 +18,7 @@
 MESH FILE_PATH $1.msh DIMENSIONS 3
 
 # these are the default values, they are overwritten by the commandline arguments
-MILONGA_PROBLEM SCHEME elements FORMULATION s2  # this is overriden by the commandline
+MILONGA_PROBLEM SCHEME elements FORMULATION diffusion  # this is overriden by the commandline
 
 # some settings to improve cpu & memory usage
 MILONGA_SOLVER EPS_TYPE jd ST_TYPE precond KSP_TYPE bcgs PC_TYPE asm
@@ -37,7 +37,7 @@ MILONGA_STEP
 # write some results into to the standard output
 # PRINT_FUNCTION phi1 HEADER
 PRINT TEXT "\# ------------------------------------------------------------------------"
-PRINT TEXT "\# " %s $1"
+PRINT TEXT "\# " %s $1 %s $2 %s $3						       
 PRINT TEXT "\# ------------------------------------------------------------------------"
 PRINT TEXT "\# keff     = " %.8f keff SEP " " TEXT "(" %+.1f 1e5*(1-1/keff) TEXT "pcm )"
 PRINT TEXT "\# nodes    = " %.0f nodes
@@ -53,4 +53,4 @@ PRINT TEXT "\# -----------------------------------------------------------------
 
 # files for gmsh and vtk post-processing
 # MESH_POST FILE_PATH $1_out.msh phi1
-FLUX_POST FILE_PATH $1.vtk
+FLUX_POST FILE_PATH $1-$2-$3.vtk
