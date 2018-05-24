@@ -87,6 +87,22 @@ milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005}
 its impossible to propose any paralelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
+\subsection{PETSc and SLEPc in milonga}
+The parallelization proccess of a software can be factored in different ways. 
+One option is to make use of the built-in parallel functions of PETSc and take 
+advantage of its inherent parallel implementation to build and solve milonga 
+matrices.
+
+In order to make it work, milonga must generate its matrices in a way which PETSc 
+functions are capable of work in parallel.
+
+\textbf{How to do it? Understand how milonga build (from FEM and FVM) its matrices 
+and how it call PETSc and SLEPc}
+
+[Mental note] In the discretization files (specifically diffusion\_elements.c) the matrices are built 
+using gsl (gnu scientific library). This *maybe* must change to make use of PETSc matrices.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
 
