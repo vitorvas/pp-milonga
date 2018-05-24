@@ -102,6 +102,11 @@ and how it call PETSc and SLEPc}
 [Mental note] In the discretization files (specifically diffusion\_elements.c) the matrices are built 
 using gsl (gnu scientific library). This *maybe* must change to make use of PETSc matrices.
 
+milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
+GSL parallel capable \cite{Aliaga2004}, it has never reached a level of practical use. Considering
+this fact, a possible approach to make milonga parallel is to replace GSL functions used by
+discretization implementations in milonga by equivalent PETSc functions. Once milonga is ready to
+use PETSc data structures, the parallelization becomes more straighforward.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
