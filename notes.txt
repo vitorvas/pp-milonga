@@ -38,3 +38,9 @@ Ver como automatizar isso e conferir, ao mesmo tempo, consumo de memória
 e tempo. E fazer inicialmente apenas para FEM enquanto o FVM não estiver 
 100% com o exemplo utilizado. Pretendo usar só um inicialmente.
 
+
+-----------------------------------------------------------------
+Assim para debugar o milonga usando o mpirun. Notar que para cada processo ele vai abrir
+um xterm diferente e cada debug será feito em um processo.
+
+mpirun -np 2 xterm -e gdb --args /home/vitors/workspace/development/milonga-vitor/milonga profiling.mil --volumes --diffusion tet-s volumes diffusion

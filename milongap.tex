@@ -7,6 +7,11 @@
 \usepackage{verbatim}
 \usepackage{listings}  % Have .geo file code or other source code
 
+% Please add the following required packages to your document preamble
+% from www.tablesgenerator.com
+% \usepackage{booktabs}
+\usepackage{multirow}
+
 \newcommand{\SN}{S$_N$}
 \renewcommand{\vec}[1]{\bm{#1}} % vector is bold italic
 \newcommand{\vd}{\bm{\cdot}} % slightly bold vector dot
@@ -87,21 +92,6 @@ milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005}
 its impossible to propose any paralelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
-\subsection{PETSc and SLEPc in milonga}
-The parallelization proccess of a software can be factored in different ways. 
-One option is to make use of the built-in parallel functions of PETSc and take 
-advantage of its inherent parallel implementation to build and solve milonga 
-matrices.
-
-In order to make it work, milonga must generate its matrices in a way which PETSc 
-functions are capable of work in parallel.
-
-\textbf{How to do it? Understand how milonga build (from FEM and FVM) its matrices 
-and how it call PETSc and SLEPc}
-
-[Mental note] In the discretization files (specifically diffusion\_elements.c) the matrices are built 
-using gsl (gnu scientific library). This *maybe* must change to make use of PETSc matrices.
-
 milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
 GSL parallel capable \cite{Aliaga2004}, it has never reached a level of practical use. Considering
 this fact, a possible approach to make milonga parallel is to replace GSL functions used by
@@ -143,6 +133,22 @@ to solve the neutron transport equation using the diffusion approximation and th
 making a total of four test-cases.
 
 The mesh used has 680,000 tetrahedrical elements.
+
+\begin{table}[]
+\centering
+\caption{Meshes sizes}
+\label{tab:sizes}
+\begin{tabular}{@{}llll@{}}
+\toprule
+                        &            & Tetrahedrical & Hexahedrical \\ \midrule
+\multirow{2}{*}{small}  & N elements &               &              \\
+                        & N nodes    &               &              \\
+\multirow{2}{*}{medium} & N elements &               &              \\
+                        & N nodes    &               &              \\
+\multirow{2}{*}{big}    & N elements &               &              \\
+                        & N nodes    &               &              \\ \cmidrule(l){2-4} 
+\end{tabular}
+\end{table}
 
 %The test case is made of two different meshes. These meshes are generated using the original cylinder geometry file
 %provided by milonga as part of its examples/check cases. The first mesh is a tetrahedrical one and has $N$
