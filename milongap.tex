@@ -111,6 +111,32 @@ axis significantly helps to understanding why, how and which parallelization tec
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
 
+As said in the previous section, milonga makes use of PETSc and SLEPc to
+build the matrices obtained from FEM or FVM formulations and then solve
+them using the algorithms previously set. However, this is done sequentially.
+In other words, only one processor is used to do the whole work. Considering
+that multi-processor chips are the common computing platform today, one
+way of making milonga faster is to split the matrices build and solve works
+among the available processors. How this can be done?
+
+The \textit{de facto} method applied by the modern finite elements and
+finite volumes software (like OpenFOAM \cite{OpenFOAM}) is to decompose
+the calculation domain. The set of methods (which applies a number of
+different algorithms for mesh partition) used for this purpose are
+called, without surprises, domain decompositon methods.
+
+In the present work, the ideia is to use a slightly primitive approach at
+the expense of not being an optimized solution and, at the sime time,
+being a lot simpler to implement. The idea behind this approach is not make
+milonga faster than any other nuclear reactor calculation software.
+Actually, this approach aims to evaluate the performance of a first
+parallel implementation of milonga before going toward a more expensive
+and time consuming implementation. A first simple parallel prototype can be
+a valuable resource in order to predict the advantages and the odds of having
+a more robust implementation which, on the other hand, can require a deep
+re-factoring of FEM/FVM mesh related data structures.
+
+
 \section{Profiling}
 Before any attempt to parallelize any piece of software, a basic task must be performed:
 software execution profiling. Profiling consists in a dynamic program analysis
@@ -189,7 +215,7 @@ memory consumption for each one. This could give a hint on how the memory increa
 serving as a potential source for optimization.
 
 In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
-test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{milonga}
+test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{Theler2014}
 and consists of the same problem solved in three different discretizations, respectively increased. In other words,
 the reference mesh was refined one time and the refined mesh was again refined. This process was carried by simply
 using the \texttt{-refine} parameter of gmsh. \textbf{(ERRO na leitura. Mudar o .geo e o texto de acordo).}
@@ -220,7 +246,7 @@ by GSL.
 But why speaking about external libraries since they are extensively used, tested and verified? Because
 the parallelization of milonga using threads must take in account if external functions are
 thread-safe\footnote{A thread-safe function is one function capable of correctly work during simultaneous
-  execution.}. In the case of GSL as noted at the section 2.12 of its manual: "The library can be used in multi-threaded programs. All the functions are thread-safe, in the sense that they do not use static variables". Despite the affirmative the
+  execution by different threads.}. In the case of GSL as noted at the section 2.12 of its manual: "The library can be used in multi-threaded programs. All the functions are thread-safe, in the sense that they do not use static variables". Despite the affirmative the
 simple fact of being considered thread-safe is not a garantee of error free use. Special care must be taken to safely
 distributed work in threads and details on how this is achieved in milonga parallel implementation will be provided
 in the next sections.
