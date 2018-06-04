@@ -115,8 +115,8 @@ As said in the previous section, milonga makes use of PETSc and SLEPc to
 build the matrices obtained from FEM or FVM formulations and then solve
 them using the algorithms previously set. However, this is done sequentially.
 In other words, only one processor is used to do the whole work. Considering
-that multi-processor chips are the common computing platform today, one
-way of making milonga faster is to split the matrices build and solve works
+that multi-processor systems are the common computing platform today, one
+way of making milonga faster is to split the matrices build and solve workload
 among the available processors. How this can be done?
 
 The \textit{de facto} method applied by the modern finite elements and
