@@ -74,7 +74,7 @@ This is the abstract one day I'll write
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Before any atempt to describe \textit{milonga} nuclear code in parallel, it is
+Before any attempt to describe \textit{milonga} nuclear code in parallel, it is
 necessary to describe its context and how it works. In order to do that, is mandatory
 to give a brief introduction of \textit{wasora}.
 
@@ -89,22 +89,37 @@ There are two first approaches to parallelize milonga:
 \end{itemize}
 
 milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
-its impossible to propose any paralelization scheme for milonga before devoting some
+its impossible to propose any parallelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
-milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
+Milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
 GSL parallel capable \cite{Aliaga2004}, it has never reached a level of practical use. Considering
-this fact, a possible approach to make milonga parallel is to replace GSL functions used by
-discretization implementations in milonga by equivalent PETSc functions. Once milonga is ready to
-use PETSc data structures, the parallelization becomes more straighforward.
+this fact and the plug-in structure of milonga - the reader must keep in mind that milonga runs
+over wasora - there are several implementation details which can make the parallel implementation
+of milonga more challenging. In the next section the authors try to bring some light over some
+implementation details, the decisions made to achieve some degree of parallelization together with
+explanations on the design basis of milonga.
+
+%Considering
+%this fact, a possible approach to make milonga parallel is to replace GSL functions used by
+%discretization implementations in milonga by equivalent PETSc functions. Once milonga is ready to
+%use PETSc data structures, the parallelization becomes more straighforward.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Design Basis and Code Structure}
+
+%There is an elegant text explaining the development history of milonga \cite{Theler2014}. 
 
 The design basis of milonga takes in account a wide range of aspects. 
-In special, milonga focuses on four main development directions, namely: the problems to be solved, the input of the problems, the 
+In special, milonga focuses on four main development directions, namely:
+the problems to be solved, the input of the problems, the 
 output of solutions and the implementation. An elegant presentation 
-of milonga'a development history is presented by the code author 
+of milonga's development history is presented by the code author 
 German Theler \cite{Theler2014}. The brief comments on milonga's 
 design basis is aimed to help to put in perspective the decisions 
-made to parallelize milonga under the aspects of its initial development. Better saying, understanding milonga's development 
+made to parallelize milonga under the aspects of its initial development.
+Better saying, understanding milonga's development 
 axis significantly helps to understanding why, how and which parallelization techniques are used.
 
 
@@ -123,10 +138,10 @@ The \textit{de facto} method applied by the modern finite elements and
 finite volumes software (like OpenFOAM \cite{OpenFOAM}) is to decompose
 the calculation domain. The set of methods (which applies a number of
 different algorithms for mesh partition) used for this purpose are
-called, without surprises, domain decompositon methods.
+called, without surprises, domain decomposition methods.
 
-In the present work, the ideia is to use a slightly primitive approach at
-the expense of not being an optimized solution and, at the sime time,
+In the present work, the idea is to use a slightly primitive approach at
+the expense of not being an optimized solution and, at the same time,
 being a lot simpler to implement. The idea behind this approach is not make
 milonga faster than any other nuclear reactor calculation software.
 Actually, this approach aims to evaluate the performance of a first
@@ -153,12 +168,12 @@ the existence of any bottlenecks of its execution.
 
 The profiling of milonga was performed in a set of different cases. The chosen geometry is one which is part of
 milonga distribution files. It consists of a critical cylinder, with only one material and meshed with
-tetrahedrical elements. The same mesh is then used for four different simulations: two of based on
+tetrahedral elements. The same mesh is then used for four different simulations: two of based on
 finite elements and two based on finite volumes discretization schemes. Each discretization scheme is used
 to solve the neutron transport equation using the diffusion approximation and the discrete ordinates $S_N$ method,
 making a total of four test-cases.
 
-The mesh used has 680,000 tetrahedrical elements.
+The mesh used has 680,000 tetrahedral elements.
 
 \begin{table}[]
 \centering
@@ -166,7 +181,7 @@ The mesh used has 680,000 tetrahedrical elements.
 \label{tab:sizes}
 \begin{tabular}{@{}llll@{}}
 \toprule
-                        &            & Tetrahedrical & Hexahedrical \\ \midrule
+                        &            & Tetrahedral & Hexahedrical \\ \midrule
 \multirow{2}{*}{small}  & N elements &               &              \\
                         & N nodes    &               &              \\
 \multirow{2}{*}{medium} & N elements &               &              \\
@@ -214,7 +229,7 @@ One idea is to have a parametric simulation that would increase the number of me
 memory consumption for each one. This could give a hint on how the memory increases relatively to the meshes sizes
 serving as a potential source for optimization.
 
-In order to assess how the performace of milonga degrades with the increase of the problem size, a \textit{benchmark}
+In order to assess how the performance of milonga degrades with the increase of the problem size, a \textit{benchmark}
 test is proposed. This reference case is a modified version of the 2D PWR case provided with milonga \cite{Theler2014}
 and consists of the same problem solved in three different discretizations, respectively increased. In other words,
 the reference mesh was refined one time and the refined mesh was again refined. This process was carried by simply
@@ -247,7 +262,7 @@ But why speaking about external libraries since they are extensively used, teste
 the parallelization of milonga using threads must take in account if external functions are
 thread-safe\footnote{A thread-safe function is one function capable of correctly work during simultaneous
   execution by different threads.}. In the case of GSL as noted at the section 2.12 of its manual: "The library can be used in multi-threaded programs. All the functions are thread-safe, in the sense that they do not use static variables". Despite the affirmative the
-simple fact of being considered thread-safe is not a garantee of error free use. Special care must be taken to safely
+simple fact of being considered thread-safe is not a guarantee of error free use. Special care must be taken to safely
 distributed work in threads and details on how this is achieved in milonga parallel implementation will be provided
 in the next sections.
 
@@ -262,15 +277,15 @@ The computations are carried in two steps:
 \end{enumerate}
 
 milonga uses the PETSc library to perform both tasks. In order to be able to solve the linear problem
-in parallel, a special care must be taken in the proccess of building the matrices.
+in parallel, a special care must be taken in the process of building the matrices.
 
 
 \subsection{Parallel Programming Patterns}
 (James Reinders - Structure Parallel Programming presentation)
-Parallel programming patterns where used to get communication between proccess after
+Parallel programming patterns where used to get communication between process after
 domain decomposition but also to estimate the best decompositions considering the system
 architecture. The partitions algorithm is parametrized, which allows fine tuning of performance
-simply making parameters twinkling thus changinhg the memory ocuppancy/inter proccess communication ratio.
+simply making parameters twinkling thus changing the memory occupancy/inter process communication ratio.
 
 
 
@@ -308,10 +323,10 @@ OpenMP is...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Analysis}
 
-Milonga runtime, profiling and memory demand before changes.
-Milonga runtime, profiling and memory demand after changes
+Milonga reunite, profiling and memory demand before changes.
+Milonga run-time, profiling and memory demand after changes
 
-Assesment of changes.
+Assessment of changes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Subsection Goes Here}
@@ -405,7 +420,7 @@ Extrude {0, 0, 2*a} {
 Inside the \texttt{extrude} command, a \textit{layers} primitive is used to
 define the number of layers to be extruded. The \textit{round} command must
 be added to round the non-integer value previously defined. This is done
-in order to keep a similar proportion to the tetrahedrical mesh. The
+in order to keep a similar proportion to the tetrahedral mesh. The
 command \textit{Recombine} is used to recombine tetrahedra into prisms,
 hexahedra or pyramids, depending on the algorithm.
 
