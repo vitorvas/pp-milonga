@@ -44,3 +44,19 @@ Assim para debugar o milonga usando o mpirun. Notar que para cada processo ele v
 um xterm diferente e cada debug será feito em um processo.
 
 mpirun -np 2 xterm -e gdb --args /home/vitors/workspace/development/milonga-vitor/milonga profiling.mil --volumes --diffusion tet-s volumes diffusion
+
+
+-----------------------------------------------------------------
+O erro abaixo ocorre quando a biblioteca petsc está compilada como debug.
+Como release, são executadas duas funções do milonga idênticas separadamente.
+A ideia é entender onde usa acontece e como o milonga usa as funções petsc para
+construir as matrizes.
+
+(gdb) backtrace
+#0  VecGetValues_MPI (xin=0x163c6d0, ni=1, ix=0x152acb0, y=0x166af30) at /home/vitors/libs/petsc-3.9.2/src/vec/vec/impls/mpi/pdvec.c:921
+#1  0x00007ffff5cc9a25 in VecGetValues (x=0x163c6d0, ni=1, ix=0x152acb0, y=0x166af30) at /home/vitors/libs/petsc-3.9.2/src/vec/vec/interface/rvector.c:899
+#2  0x000000000041d2b9 in diffusion_volumes_results_fill_flux () at ./discretizations/diffusion_volumes.c:453
+#3  0x0000000000411295 in milonga_instruction_step (arg=0x870290) at ./milonga.c:118
+#4  0x0000000000442ce9 in wasora_step (whence=0) at ../wasora/src/wasora.c:399
+#5  0x00000000004423db in wasora_standard_run () at ../wasora/src/wasora.c:199
+#6  0x00000000004422d2 in main (argc=5, argv=0x7fffffffc3a8) at ../wasora/src/wasora.c:159
