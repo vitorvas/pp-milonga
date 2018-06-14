@@ -54,4 +54,8 @@ PRINT TEXT "\# -----------------------------------------------------------------
 
 # files for gmsh and vtk post-processing
 # MESH_POST FILE_PATH $1_out.msh phi1
-FLUX_POST FILE_PATH $1-$2-$3.vtk
+
+# Aparentemente, o FLUX_POST não funciona corretamente
+# com o MPI. Será que o MESH_POST tem o mesmo funcionamento?
+# FLUX_POST FILE_PATH $1-$2-$3.vtk
+MESH_POST FILE_PATH $1-$2-$3.vtk phi1
