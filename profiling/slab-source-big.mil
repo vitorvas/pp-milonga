@@ -1,17 +1,17 @@
 # solves a 1d-slab with independent neutron source (no keff)
 # this results in a linear system (not an eigen-problem)
-a = 20
-MESH NAME structured STRUCTURED DIMENSIONS 1 NCELLS_X 20 LENGTH_X a
+MILONGA_DEBUG
 
-MATERIAL fuel SigmaT 0.32640 SigmaS 0.248064 SigmaA 0.013056 nuSigmaF 2.7*0.065280
+a = 10000
+MESH NAME structured STRUCTURED DIMENSIONS 1 NCELLS_X a LENGTH_X a
+
+MATERIAL fuel SigmaT 0.54628  SigmaS 0.464338  D 1/(3*SigmaT(x)) S 0.1
 
 PHYSICAL_ENTITY NAME fuel MATERIAL fuel
 
 PHYSICAL_ENTITY NAME left  BC null
 PHYSICAL_ENTITY NAME right BC null
 
-MILONGA_DEBUG MATRICES_ASCII
-
 MILONGA_STEP
 
-PRINT_FUNCTION phi1 HEADER
+# PRINT_FUNCTION phi1 HEADER

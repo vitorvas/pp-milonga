@@ -80,15 +80,8 @@ to give a brief introduction of \textit{wasora}.
 
 Wasora is... \cite{wasora}.
 
-There are two first approaches to parallelize milonga:
-\begin{itemize}
-\item Parallelize only the solution of the matrices obtained by the discretization
-  provided by either finite volumes of finite elements discretization schemes using
-  SLEPc and PETSc libraries;
-\item Parallelize using domain decomposition techniques.
-\end{itemize}
 
-milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
+Milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
 its impossible to propose any parallelization scheme for milonga before devoting some
 time to understand the way both of these libraries work.
 
@@ -122,6 +115,11 @@ made to parallelize milonga under the aspects of its initial development.
 Better saying, understanding milonga's development 
 axis significantly helps to understanding why, how and which parallelization techniques are used.
 
+However, milonga runs on top of wasora and since both pieces of software 
+are intrinsically connected, it is worth explaining the workflow of milonga 
+execution as a plugin of wasora. First of all, wasora is responsible for 
+arguments processing and input/output operations. In the set of I/O operations 
+are mesh reading and processing, all of it performed by wasora. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theory}
@@ -278,6 +276,35 @@ The computations are carried in two steps:
 
 milonga uses the PETSc library to perform both tasks. In order to be able to solve the linear problem
 in parallel, a special care must be taken in the process of building the matrices.
+
+\section{Parallelization}
+
+There are two first approaches to parallelize milonga:
+\begin{itemize}
+\item Parallelize only the solution of the matrices obtained by the discretization
+  provided by either finite volumes of finite elements discretization schemes using
+  SLEPc and PETSc libraries;
+\item Parallelize using domain decomposition techniques.
+\end{itemize}
+
+The chosen solution uses a mix of two different parallelization techniques. Based 
+on milonga's code structure it is possible to use a thread based OpenMP approach to 
+parallelize costly functions which does not have data dependency among loop variables. An example of this case is a mesh construction function were each element of the data structure inside a loop can be treated individually.
+
+The other technique consists in taking advantage of PETSc and Slepc parallel 
+capabilities to divide vector and matrices structures among different instances 
+of the program.
+
+In order to have such a mix of techniques working together, some design decisions 
+must be made which also must define some constraints. They are:
+
+\begin{itemize}
+\item Only the rank zero program performs actions not related to PETSc or SLEPc 
+libraries;
+\item This program makes use of OpenMP to accelerate loop tasks;
+\item Once milonga reaches the stage of building and solving the matrix problems, 
+these tasks are parallelized accordingly to PETSc MPI constructs.
+\end{itemize}
 
 
 \subsection{Parallel Programming Patterns}
