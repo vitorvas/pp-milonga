@@ -42,7 +42,7 @@
 
 
 %%%% Maketitle
-\title{An analysis of \textit{milonga} nuclear code aimed to multi-thread parallelization}
+\title{An analysis of \textit{milonga} nuclear code aimed to hybrid methods parallelization}
 %\title{Milonga Nuclear Code implementation analisys aimed to future parallelization}
 \author{Vitor Vasconcelos$^{*}$, Andr\'e A. C. dos Santos$^{*}$, Daniel Campolina$^{*}$ and Germ\'an Theler$^{\dagger}$}
 
@@ -298,14 +298,33 @@ of the program.
 In order to have such a mix of techniques working together, some design decisions 
 must be made which also must define some constraints. They are:
 
-\begin{itemize}
+\begin{enumerate}
 \item Only the rank zero program performs actions not related to PETSc or SLEPc 
 libraries;
 \item This program makes use of OpenMP to accelerate loop tasks;
-\item Once milonga reaches the stage of building and solving the matrix problems, 
-these tasks are parallelized accordingly to PETSc MPI constructs.
-\end{itemize}
+\item\label{th:tres} Once milonga reaches the stage of building and solving the matrix problems, these tasks are parallelized accordingly to PETSc MPI constructs.
+\end{enumerate}
 
+The task \ref{th:tres} is not straightforward, though. Milonga relies on a neat 
+implementation which uses pointers to functions to decide, in execution time, 
+which discretization method will be used and which formulation will be used to solve the neutron equation.
+
+So, once the text string containing this information is parsed, the corresponding 
+functions are loaded in milonga's data structure. These functions are implemented 
+in different files, accordingly to the formulation and discretizations available. 
+These functions, on their turn, call petsc matrices and vectors allocation 
+routines, located in other files. The clear advantage on this approach is the 
+easy addition of new formulations and discretization methods, which must only 
+follow the defined interface.
+
+% Essa explicação abaixo está ruim: tem que deixar mais claro.
+% Entretanto, só vai ficar claro depois que for implementada, pra ter certeza
+% que será assim mesmo.
+% milonga.c:65 -> diffusion_volumes.c:64 -> allocate.c:51
+However, on its down side, the functions chain used to allocate PETSc related 
+data makes the parallelization task more difficult since there are many parts 
+of code which must be executed by parallel programs but should be called only 
+once.
 
 \subsection{Parallel Programming Patterns}
 (James Reinders - Structure Parallel Programming presentation)
@@ -357,58 +376,50 @@ Assessment of changes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Subsection Goes Here}
-The user must manually capitalize initial letters of a subsection heading.
 
-For those who like equations in their papers, \LaTeX\ is a good choice. Here is
-an equation for the Marshak diffusion boundary condition:
-\begin{equation} \label{eq:marshak}
-  4 J^- = \phi + 2 D \vec{n} \vd \grad \phi \,.
-\end{equation}
-If we so choose, we can effortlessly reference the equation later.
+%Figure~\ref{fig:voltage} shows how a plot might conceivably look in your
+%document. Always place figures after they are referenced so as not to throw
+%off the reader. You can use symbols and different line styles to help
+%differentiate your results, especially if they are printed in black and white.
+%Note how Fig.~\ref{fig:voltage} uses dashed lines \verb|--| for the exact
+%solution, solid lines \verb|-| for the new method's solutions, and dotted lines
+%\verb|:| for existing inaccurate methods.
+%\begin{figure}[ht] % replace 't' with 'b' to force it to be on the bottom
+%  \centering
+%  \includegraphics{example_figure}
+%  \caption{Captions are flush with the left.}
+%  \label{fig:voltage}
+%\end{figure}
 
-Figure~\ref{fig:voltage} shows how a plot might conceivably look in your
-document. Always place figures after they are referenced so as not to throw
-off the reader. You can use symbols and different line styles to help
-differentiate your results, especially if they are printed in black and white.
-Note how Fig.~\ref{fig:voltage} uses dashed lines \verb|--| for the exact
-solution, solid lines \verb|-| for the new method's solutions, and dotted lines
-\verb|:| for existing inaccurate methods.
-\begin{figure}[ht] % replace 't' with 'b' to force it to be on the bottom
-  \centering
-  \includegraphics{example_figure}
-  \caption{Captions are flush with the left.}
-  \label{fig:voltage}
-\end{figure}
-
-Later on, we can include a table, even one that spans two columns such as
-Table~\ref{tab:widetable}.
+%Later on, we can include a table, even one that spans two columns such as
+%Table~\ref{tab:widetable}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table*}[htb]
-  \centering
-\begin{tabular}{llllllllll}\toprule
-      & $\phi_T(0)$      & $\phi_T(10)$      & $\phi_T(20)$      &
-      $\phi_D(0)$      & $\phi_D(10)$      & $\phi_D(20)$      & $\rho$      &
-      $\varepsilon$      & $N_\text{it}$
-\\ \midrule
-$c=0.999$  & 0.9038 & 20.63 & 31.24 & 0.9087 & 20.63 & 31.23 & 0.2192 & $10^{-7}$ & 15
-\\
-$c=0.990$  & 0.3675 & 13.04 & 24.7 & 0.3696 & 13.04 & 24.69 & 0.2184 & $10^{-7}$ & 15
-\\
-$c=0.900$  & 0.009909 & 4.776 & 17.64 & 0.009984 & 4.786 & 17.63 & 0.2118 & $10^{-7}$ & 14
-\\
-$c=0.500$  & $6.069\times 10^{-5}$ & 2.212 & 15.53 & 6.213$\times 10^{-5}$ & 2.239 & 15.53 & 0.2068 & $10^{-7}$ & 13
-\\
-\bottomrule
-\end{tabular}
-  \caption{This is an example of a really wide table which might not normally
-  fit in the document.}
-  \label{tab:widetable}
-\end{table*}
+%\begin{table*}[htb]
+%  \centering
+%\begin{tabular}{llllllllll}\toprule
+%%      & $\phi_T(0)$      & $\phi_T(10)$      & $\phi_T(20)$      &
+%      $\phi_D(0)$      & $\phi_D(10)$      & $\phi_D(20)$      & $\rho$      &
+%      $\varepsilon$      & $N_\text{it}$
+%\\ \midrule
+%$c=0.999$  & 0.9038 & 20.63 & 31.24 & 0.9087 & 20.63 & 31.23 & 0.2192 & $10^{-7}$ & 15
+%\\
+%$c=0.990$  & 0.3675 & 13.04 & 24.7 & 0.3696 & 13.04 & 24.69 & 0.2184 & $10^{-7}$ & 15
+%\\
+%$c=0.900$  & 0.009909 & 4.776 & 17.64 & 0.009984 & 4.786 & 17.63 & 0.2118 & $10^{-7}$ & 14
+%\\
+%$c=0.500$  & $6.069\times 10^{-5}$ & 2.212 & 15.53 & 6.213$\times 10^{-5}$ & 2.239 & 15.53 & 0.2068 & $10^{-7}$ & 13
+%\\
+%\bottomrule
+%\end{tabular}
+%  \caption{This is an example of a really wide table which might not normally
+%  fit in the document.}
+%  \label{tab:widetable}
+%\end{table*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Notice how the table reference uses a Roman numeral
-for its numbering scheme, whereas the figure reference uses an Arabic numeral.
-For one-column tables, use the \verb|table| environment; two-column tables use
-\verb|table*|. The same applies to figures.
+%Notice how the table reference uses a Roman numeral
+%for its numbering scheme, whereas the figure reference uses an Arabic numeral.
+%For one-column tables, use the \verb|table| environment; two-column tables use
+%\verb|table*|. The same applies to figures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Another Subsection}
