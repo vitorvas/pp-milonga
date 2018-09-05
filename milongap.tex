@@ -326,6 +326,19 @@ data makes the parallelization task more difficult since there are many parts
 of code which must be executed by parallel programs but should be called only 
 once.
 
+\subsection{Diffusion approximation using finite volumes}
+
+As explained earlier, milonga has different discretizations implementations. 
+In order to try a first parallelization approach, the diffusion aproximation 
+based on finite volumes was chosen. The reason for this choice is straighforward: 
+this implementation is the less complex sequential implementation available in milonga thus demanding - at least theoretically - less effort to get parallelized.
+
+Before describing the parallel implementation of this algorithm, it is useful to 
+describe how this solution scheme is implemented sequentially. The idea behind it 
+is to make the understanding of the parallelization steps more clear to the reader.
+
+\textbf{DESCRICAO DE COMO O MILONGA SE RELACIONA COM O PETSC AQUI.}
+
 \subsection{Parallel Programming Patterns}
 (James Reinders - Structure Parallel Programming presentation)
 Parallel programming patterns where used to get communication between process after
