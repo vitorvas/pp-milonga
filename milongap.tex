@@ -44,7 +44,7 @@
 %%%% Maketitle
 \title{An analysis of \textit{milonga} nuclear code aimed to hybrid methods parallelization}
 %\title{Milonga Nuclear Code implementation analisys aimed to future parallelization}
-\author{Vitor Vasconcelos$^{*}$, Andr\'e A. C. dos Santos$^{*}$, Daniel Campolina$^{*}$ and Germ\'an Theler$^{\dagger}$}
+\author{Vitor Vasconcelos$^{*}$, Andr\'e A. C. dos Santos$^{*}$, Daniel Campolina$^{*}$, Graiciany Barros$^{*}$ and Germ\'an Theler$^{\dagger}$}
 
 \institute{
 $^{*}$Centro de Desenvolvimento da Tecnologia Nuclear, CEP 31270-901,
@@ -53,7 +53,7 @@ Belo Horizonte - MG, Brazil
 $^{\dagger}$Seamplex, Rafaela, Argentina
 }
 
-\email{\{vitors, aacs, campolina\}@cdtn.br \and theler@seamplex.com}
+\email{\{vitors, aacs, graiciany.barros, campolina\}@cdtn.br \and theler@seamplex.com}
 
 % Optional disclaimer: remove this command to hide
 %\disclaimer{Notice: this manuscript is a work of fiction. Any resemblance to
@@ -75,15 +75,22 @@ This is the abstract one day I'll write
 \section{Introduction}
 
 Before any attempt to describe \textit{milonga} nuclear code in parallel, it is
-necessary to describe its context and how it works. In order to do that, is mandatory
-to give a brief introduction of \textit{wasora}.
+necessary to describe its context and how it works and, most important, why to parallelize
+it. The main reason to parallelize \textit{milonga} is to allow it to make use
+of the current processors being used today, which commonly have more than one core
+for processing. A work similar to the one proposed in this paper was carried out
+in order to add parallel calculation feature to a otherwise sequential neutronics
+analysis code \cite{Gonzalez2018}.
 
+In order to explain milonga, is mandatory to give a brief introduction of \textit{wasora}.
 Wasora is... \cite{wasora}.
 
 
 Milonga makes extensive use of PETSc \cite{petsc} and SLEPc \cite{Hernandez2005} libraries and
 its impossible to propose any parallelization scheme for milonga before devoting some
-time to understand the way both of these libraries work.
+time to understand the way both of these libraries work. Considering that both of
+metioned libraries are also developed over another library called MPI \cite{MPI}, a brief
+description of this library is also presented. 
 
 Milonga also makes use of GNU Scientific Library \cite{gsl2016}. Although some efforts were made to make
 GSL parallel capable \cite{Aliaga2004}, it has never reached a level of practical use. Considering
